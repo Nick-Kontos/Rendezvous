@@ -10,9 +10,7 @@
 		<title><g:layoutTitle default="Grails"/></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
-  		<asset:stylesheet src="application.css"/>
   		<asset:stylesheet src="bootstrap.min.css"/>
-		<asset:javascript src="application.js"/>
 		<asset:javascript src="bootbox.min.js"/>
 		<asset:javascript src="bootstrap.min.js"/>
 		<g:layoutHead/>
