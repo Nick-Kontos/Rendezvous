@@ -6,5 +6,6 @@
 	</head>
 	<body>
 		<a href="#" onclick="bootbox.alert('sgds');">Click</a>
+		<g:link controller="app">App</g:link>
 	</body>
 </html>
