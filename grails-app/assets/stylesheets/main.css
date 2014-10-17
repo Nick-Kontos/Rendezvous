@@ -26,3 +26,22 @@
 .bg-white{
 	background-color: #fff;
 }
+.sidebar{
+	background-color: #fff;
+}
+.sidebar ul{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	list-style: none;
+}
+.sidebar ul li{
+	width: 100%;
+	margin: 0;
+}
+.contentBody{
+	background-color: #fff;
+}
+html,body{
+	background-color: #ccc;
+}
