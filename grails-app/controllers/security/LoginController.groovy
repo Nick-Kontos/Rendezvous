@@ -1,14 +1,16 @@
 package security
 
 import groovy.sql.Sql
+import information.Person
 
 class LoginController {
-	def dataSource;
+	//def dataSource;
 	
     def auth() { 
-		def sql=new Sql(dataSource)
+		/*def sql=new Sql(dataSource)
 		def result=sql.rows("select * from PERSON where ssn='${params.ssn}'")
-		def user=result[0];
+		def user=result[0];*/
+		Person user=Person.findWhere(ssn:params.ssn);
 		if(user?.password?.equals(params.password)){
 			session.user=user;
 			String uri=params.requestUri

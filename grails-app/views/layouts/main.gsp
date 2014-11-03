@@ -27,14 +27,23 @@
 					alt="Grails" /></a><input type="text" placeholder="Search">
 		</div>
 		<div class="row">
-			<div id="sideNavbar" class="col-xs-2 sidebar">
-			<g:sidebar></g:sidebar>
-			</div>
-			<div class="col-lg-10">
-				<div class="col-lg-12 contentBody">
-					<g:layoutBody />
+			<g:if test="${hideSidebar}">
+				<div class="col-lg-12">
+					<div class="col-lg-12 contentBody">
+						<g:layoutBody />
+					</div>
 				</div>
-			</div>
+			</g:if>
+			<g:else>
+				<div id="sideNavbar" class="col-xs-2 sidebar">
+					<g:sidebar></g:sidebar>
+				</div>
+				<div class="col-lg-10">
+					<div class="col-lg-12 contentBody">
+						<g:layoutBody />
+					</div>
+				</div>
+			</g:else>
 		</div>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display: none;">

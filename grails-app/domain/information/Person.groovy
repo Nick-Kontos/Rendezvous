@@ -27,4 +27,18 @@ class Person {
 		email column: 'Email'
 		telephone column: 'Telephone'
 	}
+	
+	public static boolean isUser(Person p){
+		return p instanceof User;
+	}
+	public static boolean isEmployee(Person p){
+		return p instanceof Employee;
+	}
+	public static boolean isManager(Person p){
+		if(p instanceof Employee){
+			Employee e=(Employee)p;
+			return e.role.equals("Manager");
+		}
+		return false;
+	}
 }

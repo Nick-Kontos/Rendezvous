@@ -2,5 +2,7 @@ package employee_system
 
 class EmployeeManagementController {
 
-    def index() { }
+    def index() {
+		render view:'index';
+	}
 }
