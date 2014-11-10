@@ -8,7 +8,7 @@ import information.User
 
 class SecurityFilters {
 	def filters = {
-		appLoginCheck(controller: 'app', action: '*') {
+		appLoginCheck(controller: 'app|referral|userDate|likes', action: '*') {
 			before = {
 				if (!session.user && !actionName.equals('login')&&!Person.isUser(session.user)) {
 					session.invalidate()

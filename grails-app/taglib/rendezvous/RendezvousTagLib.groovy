@@ -5,9 +5,7 @@ import information.Person;
 class RendezvousTagLib {
 	//static encodeAsForTags = [tagName: [taglib:'html'], otherTagName: [taglib:'none']]
 	def sidebar={attrs, body ->
-		String type="user";
-		if(session.user)
-			out << render(template:"/taglib_templates/sidebar_menu", model:[type:type]);
+			out << render(template:"/taglib_templates/sidebar_menu");
 	}
 	def isUser={attrs,body->
 		if(Person.isUser(session.user)){

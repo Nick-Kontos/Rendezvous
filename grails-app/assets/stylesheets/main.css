@@ -45,3 +45,6 @@
 html,body{
 	background-color: #ccc;
 }
+table{
+	width: 100%;
+}
