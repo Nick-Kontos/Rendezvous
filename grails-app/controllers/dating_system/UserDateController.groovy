@@ -101,4 +101,12 @@ class UserDateController {
             '*'{ render status: NOT_FOUND }
         }
     }
+	
+	def suggestions(){
+		render view:'suggestions',model:[];
+	}
+	
+	def getLocationSuggestions(){
+		
+	}
 }

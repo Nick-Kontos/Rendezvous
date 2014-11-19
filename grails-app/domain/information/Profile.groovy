@@ -9,7 +9,7 @@ class Profile {
 	int datinGeoRange
 	String mf	
 	String hobbies
-	int height
+	double height
 	int weight
 	String hairColor
 	Date creationDate
@@ -18,8 +18,10 @@ class Profile {
 	static constraints = {
 	}
 	static mapping={
+		table 'Profile'
 		id name: 'profileId',type:'string',generator:'assigned'
 		version false
+		profileId column:'ProfileID'
 		owner column:'OwnerSSN'
 		datingAgeRangeStart column: 'DatingAgeRangeStart'
 		datingAgeRangeEnd column: 'DatingAgeRangeEnd'

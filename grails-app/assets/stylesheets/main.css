@@ -42,6 +42,10 @@
 .contentBody{
 	background-color: #fff;
 }
+.row{
+	padding-top: 10px;
+	
+}
 html,body{
 	background-color: #ccc;
 }

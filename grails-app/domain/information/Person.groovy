@@ -14,6 +14,7 @@ class Person {
     static constraints = {
     }
 	static mapping={
+		table 'Person'
 		id name: 'ssn',type:'string',generator:'assigned',column:'SSN'
 		version false
 		tablePerHierarchy false

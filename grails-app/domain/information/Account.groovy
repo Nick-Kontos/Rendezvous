@@ -10,6 +10,7 @@ class Account implements Serializable{
 	static constraints = {
 	}
 	static mapping={
+		table 'Account'
 		id composite: ['cardNumber', 'acctNum','owner'],generator:'assigned'
 		version false
 		owner column:'OwnerSSN'

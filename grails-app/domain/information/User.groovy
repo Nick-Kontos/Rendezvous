@@ -10,6 +10,7 @@ class User extends Person{
 		
     }
 	static mapping={	
+		table 'User'
 		id column: 'SSN',type:'string'
 		version false
 		ppp column: 'PPP'
