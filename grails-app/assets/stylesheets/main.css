@@ -52,3 +52,7 @@ html,body{
 table{
 	width: 100%;
 }
+#profileSelectorContainer{
+	display: inline-block;
+	float: right;
+}

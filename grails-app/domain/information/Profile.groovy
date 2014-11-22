@@ -34,4 +34,7 @@ class Profile {
 		creationDate column: 'CreationDate'
 		lastModDate column: 'LastModDate'
 	}
+	String toString(){
+		return profileId;
+	}
 }

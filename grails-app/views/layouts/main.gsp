@@ -25,6 +25,7 @@
 		<div id="grailsLogo" role="banner">
 			<a href="http://grails.org"><asset:image src="grails_logo.png"
 					alt="Grails" /></a><input type="text" placeholder="Search">
+			<g:profileSelector></g:profileSelector>
 		</div>
 		<div class="row">
 			<g:if test="${hideSidebar}">
