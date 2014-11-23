@@ -2,6 +2,8 @@ package dating_system
 
 import information.Profile;
 
+// asdf
+
 class AppController {
 
 	def index() {

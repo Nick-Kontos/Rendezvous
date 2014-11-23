@@ -6,7 +6,7 @@ import information.User
 class BootStrap {
 
 	def init = { servletContext ->
-		new Employee(ssn:'111-11-1111',
+		/*new Employee(ssn:'111-11-1111',
 		password:'111@11',
 		firstName:'Veronica',
 		lastName:'Alvarado',
@@ -30,7 +30,7 @@ class BootStrap {
 		zipCode:11790,
 		email:'tellus.lorem.eu@atlacus.org',
 		telephone:'(226) 193-8257',
-		ppp:"Good-User",rating:4,dateOfLastAct:new Date()).save(failOnError:true);
+		ppp:"Good-User",rating:4,dateOfLastAct:new Date()).save(failOnError:true);*/
 	}
 	def destroy = {
 	}
