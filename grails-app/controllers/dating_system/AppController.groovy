@@ -5,7 +5,7 @@ import information.Profile;
 class AppController {
 
 	def index() {
-		render view:'index'
+		redirect action:'dashboard';
 	}
 	def changeActiveProfile(){		
 		String p=params.newProfileId;

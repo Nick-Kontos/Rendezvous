@@ -17,7 +17,14 @@ class RendezvousTagLib {
 		if(Person.isEmployee(session.user))
 			out<<body();
 	}
-	
+	def isManager={attrs,body->
+		if(Person.isManager(session.user))
+			out<<body();
+	}
+	def loggedIn={attrs,body->
+		if(session.user)
+			out<<body();
+	}
 	def profileSelector={attrs,body->
 		if(Person.isUser(session.user))
 		{

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 <meta name="layout" content="main"/>
-<title>Employee Management</title>
+<title>Employee Manager</title>
 </head>
 <body>
   <div class="body">

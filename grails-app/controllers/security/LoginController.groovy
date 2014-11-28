@@ -16,8 +16,14 @@ class LoginController {
 			session.user=user;
 			String uri=params.requestUri
 			//redirect uri:uri,absolute:true;
-			if(User.isUser(user))
+			if(Person.isUser(user))
 				redirect controller:'App',action:'dashboard'
+			else if(Person.isEmployee(user)){
+				redirect controller:'customerRepresentative'
+			}
+			else if(Person.isManager(user)){
+				redirect controller:'employeeManager';
+			}
 		}
 		else{
 			redirect action:'login',params: [requestUri: params.requestUri,error:true]
