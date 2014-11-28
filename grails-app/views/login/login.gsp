@@ -4,7 +4,7 @@
 <g:set var="hideSidebar" value="true" scope="request"  />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="layout" content="main" />
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
 <div class="page-content">

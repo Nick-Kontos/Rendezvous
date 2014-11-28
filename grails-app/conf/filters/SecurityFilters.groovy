@@ -18,8 +18,9 @@ class SecurityFilters {
 					redirect(controller:'login',action: 'login', params: [requestUri: u])
 					return false
 				}
-				else if(!session.activeProfileId&&!actionName.equals('dashboard')){
+				else if(!session.activeProfileId&&!actionName.equals('dashboard')&&!actionName.equals('changeActiveProfile')){
 					redirect controller:'app',action:'dashboard';
+					return false
 				}
 			}
 		}
