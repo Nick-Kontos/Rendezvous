@@ -83,15 +83,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: profileInstance, field: 'owner', 'error')} required">
-	<label for="owner">
-		<g:message code="profile.owner.label" default="Owner" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="owner" name="owner.id" from="${information.User.list()}" optionKey="id" required="" value="${profileInstance?.owner?.id}" class="many-to-one"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: profileInstance, field: 'profileId', 'error')} required">
 	<label for="profileId">
 		<g:message code="profile.profileId.label" default="Profile Id" />

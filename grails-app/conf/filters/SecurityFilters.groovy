@@ -1,14 +1,15 @@
 package filters
 
-import org.junit.After;
-
 import information.Employee
 import information.Person
 import information.User
 
 class SecurityFilters {
 	def filters = {
-		appLoginCheck(controller: 'app|referral|userDate|likes', action: '*') {
+		noProfileCheck(controller:'app',action:'dashboard'){
+			
+		}
+		appLoginCheck(controller: 'app|referral|userDate|likes|profile', action: '*') {
 			before = {
 				if (!session.user && !actionName.equals('login')&&!Person.isUser(session.user)) {
 					session.invalidate()
@@ -16,6 +17,9 @@ class SecurityFilters {
 					u=u.substring(u.indexOf('/', 1));
 					redirect(controller:'login',action: 'login', params: [requestUri: u])
 					return false
+				}
+				else if(!session.activeProfileId&&!actionName.equals('dashboard')){
+					redirect controller:'app',action:'dashboard';
 				}
 			}
 		}

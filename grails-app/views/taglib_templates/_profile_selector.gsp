@@ -6,11 +6,13 @@
 			</option>
 		</g:each>
 	</select>
-	<g:form controller="App" action="switchProfile">
-		<g:hiddenField name="newProfile" value="session.activeProfileId" />
-		<g:hiddenField name="currentPage" value="${request.getRequestURI()}"/>
+	<g:form name="switchProfileForm" controller="app" action="changeActiveProfile">
+		<g:hiddenField name="newProfileId" value="${session.activeProfileId}" />
 	</g:form>
 </div>
 <script>
-	
+	$("#profileSelector").change(function(){
+		$("#newProfileId").val($(this).val());
+		$("#switchProfileForm").submit();	
+	});
 </script>

@@ -11,7 +11,7 @@ class ProfileController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def show(Profile profileInstance) {
-		boolean owns=false;
+		boolean owns=session.activeProfileId.equals(profileInstance.profileId);
         render view:'show',model:[profile:profileInstance,profileOwner:owns];
     }
 
@@ -42,8 +42,9 @@ class ProfileController {
         }
     }
 
-    def edit(Profile profileInstance) {
-        respond profileInstance
+    def edit() {
+		def profileInstance= Profile.findWhere(profileId:session.activeProfileId);
+		render view:'edit',model:[profileInstance:profileInstance];
     }
 
     @Transactional
