@@ -11,12 +11,16 @@ class SecurityFilters {
 		}
 		appLoginCheck(controller: 'app|referral|userDate|likes|profile', action: '*') {
 			before = {
+				
 				if (!session.user && !actionName.equals('login')&&!Person.isUser(session.user)) {
 					session.invalidate()
 					String u=request.forwardURI;
 					u=u.substring(u.indexOf('/', 1));
 					redirect(controller:'login',action: 'login', params: [requestUri: u])
 					return false
+				}
+				else if(controllerName.equals("profile")&&actionName.equals("create")){
+					return true;
 				}
 				else if(!session.activeProfileId&&!actionName.equals('dashboard')&&!actionName.equals('changeActiveProfile')){
 					redirect controller:'app',action:'dashboard';
@@ -35,7 +39,7 @@ class SecurityFilters {
 				}
 			}
 		}
-		managerLoginCheck(controller: 'employeeManagement', action: '*') {
+		managerLoginCheck(controller: 'employeeManager', action: '*') {
 			before = {
 				if (!session.user && !actionName.equals('login')&&!Person.isManager(session.user)) {
 					session.invalidate()
