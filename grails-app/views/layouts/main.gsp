@@ -16,6 +16,7 @@
 <g:javascript library="jquery" plugin="jquery" />
 <asset:stylesheet src="bootstrap.min.css" />
 <asset:stylesheet src="main.css" />
+<asset:stylesheet src="font-awesome.min.css" />
 <asset:javascript src="bootbox.min.js" />
 <asset:javascript src="bootstrap.min.js" />
 <g:layoutHead />

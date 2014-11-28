@@ -18,6 +18,7 @@
 <asset:stylesheet src="main.css" />
 <asset:javascript src="bootbox.min.js" />
 <asset:javascript src="bootstrap.min.js" />
+<asset:stylesheet src="font-awesome.min.css" />
 <g:layoutHead />
 </head>
 <body>
