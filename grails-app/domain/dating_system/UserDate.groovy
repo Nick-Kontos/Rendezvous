@@ -9,7 +9,7 @@ class UserDate implements Serializable{
 	Employee custRep
 	Date dateTime
 	String location
-	int bookingFee
+	double bookingFee
 	String comments
 	int user1Rating
 	int user2Rating
