@@ -13,6 +13,9 @@ class UserDate implements Serializable{
 	String comments
 	int user1Rating
 	int user2Rating
+	boolean accepted
+	boolean profile1Paid;
+	boolean profile2Paid;
     static constraints = {
     }
 	static mapping={
@@ -28,5 +31,8 @@ class UserDate implements Serializable{
 		comments column:'Comments'
 		user1Rating column:'User1Rating'
 		user2Rating column:'User2Rating'
+		accepted defaultValue:false
+		profile1Paid defaultValue:false
+		profile2Paid defaultValue:false
 	}
 }
