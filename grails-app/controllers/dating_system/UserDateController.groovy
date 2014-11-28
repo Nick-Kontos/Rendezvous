@@ -4,6 +4,7 @@ package dating_system
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import information.Profile
 
 @Transactional(readOnly = true)
 class UserDateController {
@@ -12,7 +13,26 @@ class UserDateController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond UserDate.list(params), model:[userDateInstanceCount: UserDate.count()]		
+		//def dateList = UserDate.findAllByProfile1OrProfile2(Profile.findByProfileId(session.activeProfileId))
+		def activeProfile = Profile.findByProfileId(session.activeProfileId)
+		def now = new Date()
+		def c = UserDate.createCriteria()
+		def upcomingResults = c.list{
+			or{
+				eq('profile1', activeProfile)
+				eq('profile2', activeProfile)			
+			}
+			ge('dateTime', now)
+		}
+		def c2 = UserDate.createCriteria()
+		def previousResults = c2.list{
+			or{
+				eq('profile1', activeProfile)
+				eq('profile2', activeProfile)
+			}
+			lt('dateTime', now)
+		}
+        render view:'index', model:[userDateInstanceCount: UserDate.count(), upcomingDateList: upcomingResults, previousDateList: previousResults, activeProfileId: session.activeProfileId]		
     }
 
     def show(UserDate userDateInstance) {
