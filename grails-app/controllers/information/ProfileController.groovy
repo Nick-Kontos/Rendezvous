@@ -30,7 +30,23 @@ class ProfileController {
             respond profileInstance.errors, view:'create'
             return
         }
-
+		
+		Profile p=new Profile()
+		p.owner = session.user;
+		p.creationDate = new Date();
+		p.profileId=params.profileId;
+		p.datinGeoRange=params.datinGeoRange;
+		p.datingAgeRangeStart=params.datingAgeRangeStart;
+		p.datingAgeRangeEnd=params.datingAgeRangeEnd;
+		p.hairColor=params.hairColor;
+		p.height=params.height;
+		p.hobbies=params.hobbies;
+		p.lastModDate=params.lastModDate;
+		p.mf=params.mf;
+		p.weight=params.weight;
+		
+		p.save flush:true
+		
         profileInstance.save flush:true
 
         request.withFormat {
