@@ -24,13 +24,13 @@ class UserDate implements Serializable{
 		version false
 		profile1 column:'Profile1'
 		profile2 column:'Profile2'
-		custRep column:'CustRep'
+		custRep column:'CustRep', nullable: true
 		dateTime column:'Date_Time'
-		location column:'Location'
-		bookingFee column:'BookingFee'
-		comments column:'Comments'
-		user1Rating column:'User1Rating'
-		user2Rating column:'User2Rating'
+		location column:'Location', nullable:true
+		bookingFee column:'BookingFee', nullable: true
+		comments column:'Comments', nullable: true
+		user1Rating column:'User1Rating' , nullable: true
+		user2Rating column:'User2Rating', nullable: true
 		accepted defaultValue:false
 		profile1Paid defaultValue:false
 		profile2Paid defaultValue:false

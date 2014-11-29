@@ -13,7 +13,9 @@
 	<h3>Upcoming Dates</h3>
 	<table class="table table-striped">
 		<tr>
+			<th>Action</th>
 			<th>Profile</th>
+			<th>Location</th>
 			<th>Customer Representative</th>
 			<th>Date</th>
 			<th>Booking Fee</th>
@@ -24,16 +26,49 @@
 		</tr>
 		<g:each in="${upcomingDateList }">
 			<tr>
-				<g:if test="${it?.profile1.profileId == activeProfileId }">
+				<g:if test="${it?.profile1?.profileId == activeProfileId }">
+					<g:if test="${!(it?.accepted) || it?.profile1Paid}">
+						<td><g:link type="button" class="btn btn-success"
+								disabled="disabled" controller="userDate" action="payDate">Pay</g:link>
+							<g:link type="button" class="btn btn-danger"
+								controller="userDate" action="cancelDate">Cancel</g:link></td>
+					</g:if>
+					<g:else>
+						<td><g:link type="button" class="btn btn-success"
+								controller="userDate" action="payDate">Pay</g:link> <g:link
+								type="button" class="btn btn-danger" controller="userDate"
+								action="cancelDate">Cancel</g:link></td>
+					</g:else>
 					<td>
 						${it?.profile2 }
 					</td>
 				</g:if>
 				<g:else>
+					<g:if test="${!(it?.accepted) || it?.profile2Paid}">
+						<td><g:link type="button" class="btn btn-success"
+								disabled="disabled" controller="userDate" action="payDate">Pay</g:link>
+							<g:link type="button" class="btn btn-danger"
+								controller="userDate" action="cancelDate">Cancel</g:link></td>
+					</g:if>
+					<g:else>
+						<td><g:link type="button" class="btn btn-success"
+								controller="userDate" action="payDate">Pay</g:link> <g:link
+								type="button" class="btn btn-danger" controller="userDate"
+								action="cancelDate">Cancel</g:link></td>
+					</g:else>
 					<td>
 						${it?.profile1 }
 					</td>
 				</g:else>
+				<td>
+					<g:if test="${it?.profile1Paid && it?.profile2Paid }">
+						<td>${it?.location }</td>
+					</g:if>
+					<g:else>
+						<td>Not paid: Location Unavailable</td>
+					</g:else>
+				</td>
+				
 				<td>
 					${it?.custRep.firstName + it?.custRep.lastName }
 				</td>
@@ -66,7 +101,7 @@
 		</g:each>
 	</table>
 	<h3>Past Dates</h3>
-<table class="table table-striped">
+	<table class="table table-striped">
 		<tr>
 			<th>Profile</th>
 			<th>Customer Representative</th>
@@ -79,7 +114,7 @@
 		</tr>
 		<g:each in="${previousDateList }">
 			<tr>
-				<g:if test="${it?.profile1.profileId == activeProfileId }">
+				<g:if test="${it?.profile1?.profileId == activeProfileId }">
 					<td>
 						${it?.profile2 }
 					</td>

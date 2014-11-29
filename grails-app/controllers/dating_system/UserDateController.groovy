@@ -16,7 +16,7 @@ class UserDateController {
 		//def dateList = UserDate.findAllByProfile1OrProfile2(Profile.findByProfileId(session.activeProfileId))
 		def activeProfile = Profile.findByProfileId(session.activeProfileId)
 		def now = new Date()
-		def c = UserDate.createCriteria()
+		def c = UserDate.createCriteria()	
 		def upcomingResults = c.list{
 			or{
 				eq('profile1', activeProfile)
@@ -25,7 +25,7 @@ class UserDateController {
 			ge('dateTime', now)
 		}
 		def c2 = UserDate.createCriteria()
-		def previousResults = c2.list{
+		def previousResults = UserDate.createCriteria().list{
 			or{
 				eq('profile1', activeProfile)
 				eq('profile2', activeProfile)
@@ -34,6 +34,14 @@ class UserDateController {
 		}
         render view:'index', model:[userDateInstanceCount: UserDate.count(), upcomingDateList: upcomingResults, previousDateList: previousResults, activeProfileId: session.activeProfileId]		
     }
+	
+	def payDate(){
+		
+	}
+	
+	def cancelDate(){
+		
+	}
 
     def show(UserDate userDateInstance) {
         respond userDateInstance
