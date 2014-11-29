@@ -56,6 +56,10 @@ h1,h2,h3{
 	margin: 0;
 	padding: 0;
 }
+hr{
+	margin: 5px 0;
+	padding: 0;
+}
 
 #profileSelectorContainer{
 	display: inline-block;
