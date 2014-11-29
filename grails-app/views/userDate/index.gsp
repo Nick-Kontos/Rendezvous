@@ -22,7 +22,6 @@
 			<th>Comments</th>
 			<th>Your rating</th>
 			<th>Date's rating</th>
-
 		</tr>
 		<g:each in="${upcomingDateList }">
 			<tr>

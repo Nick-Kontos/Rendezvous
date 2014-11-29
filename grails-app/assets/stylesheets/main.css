@@ -44,7 +44,7 @@
 }
 .row{
 	padding-top: 10px;
-	
+	padding-left: 10px;
 }
 html,body{
 	background-color: #ccc;
@@ -52,6 +52,15 @@ html,body{
 table{
 	width: 100%;
 }
+h1,h2,h3{
+	margin: 0;
+	padding: 0;
+}
+hr{
+	margin: 5px 0;
+	padding: 0;
+}
+
 #profileSelectorContainer{
 	display: inline-block;
 	float: right;
@@ -65,4 +74,13 @@ table{
 }
 .logoutButton{
 	margin-right: 5px;
+}
+.menuTile{
+	display: inline-block;
+	margin: 10px 2.5%;
+	height: 100px;
+	border: 1px solid #000;	
+}
+.breadcrumbsBar{
+	border-bottom: 1px solid #000;
 }

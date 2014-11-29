@@ -7,7 +7,10 @@
 <li><g:link controller="likes">Likes</g:link></li>
 </g:isUser>
 <g:isEmployee>
-<li>Employee Item</li>
+<li><g:link controller="employeeManager">Dashboard</g:link></li>
+<li><g:link controller="employeeManager" action="salesReport">Sales Reports</g:link></li>
+<li><g:link controller="employeeManager" action="allUsers">View All Users</g:link></li>
+<li><g:link controller="employeeManager" action="calendarDateStats">Calendar Stats</g:link></li>
 </g:isEmployee>
 </ul>
 </div>
