@@ -20,16 +20,8 @@ class ProfileController {
     }
 
     @Transactional
-    def save(Profile profileInstance) {
-        if (profileInstance == null) {
-            notFound()
-            return
-        }
-
-        if (profileInstance.hasErrors()) {
-            respond profileInstance.errors, view:'create'
-            return
-        }
+    def save() {
+        
 		
 		Profile p=new Profile()
 		p.owner = session.user;
@@ -47,14 +39,14 @@ class ProfileController {
 		
 		p.save flush:true
 		
-        profileInstance.save flush:true
+        
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'profile.label', default: 'Profile'), profileInstance.id])
-                redirect profileInstance
+                redirect p
             }
-            '*' { respond profileInstance, [status: CREATED] }
+            '*' { respond p, [status: CREATED] }
         }
     }
 
