@@ -18,11 +18,11 @@ class LoginController {
 			//redirect uri:uri,absolute:true;
 			if(Person.isUser(user))
 				redirect controller:'App',action:'dashboard'
-			else if(Person.isEmployee(user)){
-				redirect controller:'customerRepresentative'
-			}
 			else if(Person.isManager(user)){
 				redirect controller:'employeeManager';
+			}
+			else if(Person.isEmployee(user)){
+				redirect controller:'customerRepresentative'
 			}
 		}
 		else{
