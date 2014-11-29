@@ -24,8 +24,10 @@ class UserDateController {
 			}
 			ge('dateTime', now)
 		}
+		def l=UserDate.list();
+		println l;
 		def c2 = UserDate.createCriteria()
-		def previousResults = UserDate.createCriteria().list{
+		def previousResults = c2.list{
 			or{
 				eq('profile1', activeProfile)
 				eq('profile2', activeProfile)
