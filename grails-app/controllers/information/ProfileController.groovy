@@ -1,7 +1,5 @@
 package information
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -21,7 +19,7 @@ class ProfileController {
 
     @Transactional
     def save() {
-		Profile p=new Profile()
+		Profile p = new Profile()
 		
 		p.owner = session.user;
 		
@@ -45,11 +43,11 @@ class ProfileController {
 		p.height = Double.parseDouble(params.height);
 		
 		p.save flush:true
-		
+		println p.errors
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'profile.label', default: 'Profile'), profileInstance.id])
-                redirect p
+                flash.message = message(code: 'default.created.message', args: [message(code: 'profile.label', default: 'Profile'), p.id])
+                redirect action:"edit", model:[profileInstance:p]
             }
             '*' { respond p, [status: CREATED] }
         }
@@ -61,42 +59,49 @@ class ProfileController {
     }
 
     @Transactional
-    def update(Profile profileInstance) {
-        if (profileInstance == null) {
-            notFound()
-            return
-        }
-
-        if (profileInstance.hasErrors()) {
-            respond profileInstance.errors, view:'edit'
-            return
-        }
-
-        profileInstance.save flush:true
+    def update() {
+		
+		def p = Profile.findWhere(profileId:session.activeProfileId);
+		
+		// Dates
+		p.lastModDate= new Date();
+		
+		// Strings
+		p.mf = params.mf;
+		p.hobbies = params.hobbies;
+		p.hairColor = params.hairColor;
+		
+		// integer
+		p.datinGeoRange= Integer.parseInt(params.datinGeoRange);
+		p.datingAgeRangeStart= Integer.parseInt(params.datingAgeRangeStart);
+		p.datingAgeRangeEnd= Integer.parseInt(params.datingAgeRangeEnd);
+		p.weight= Integer.parseInt(params.weight);
+		
+		// double
+		p.height = Double.parseDouble(params.height);
+		
+		p.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Profile.label', default: 'Profile'), profileInstance.id])
-                redirect profileInstance
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'Profile.label', default: 'Profile'), p.profileId])
+                redirect action:"edit", model:[profileInstance:p]
             }
-            '*'{ respond profileInstance, [status: OK] }
+            '*'{ respond p, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(Profile profileInstance) {
+    def delete() {
 
-        if (profileInstance == null) {
-            notFound()
-            return
-        }
+		def p = Profile.findWhere(profileId:session.activeProfileId);
 
-        profileInstance.delete flush:true
+        p.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Profile.label', default: 'Profile'), profileInstance.id])
-                redirect action:"index", method:"GET"
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Profile.label', default: 'Profile'), p.id])
+                redirect action:"index", controller:"app", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
         }

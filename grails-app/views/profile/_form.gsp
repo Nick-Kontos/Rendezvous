@@ -7,7 +7,7 @@
 		<g:message code="profile.datinGeoRange.label" default="Datin Geo Range" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="datinGeoRange" type="number" value="${profileInstance.datinGeoRange}" required=""/>
+	<g:field name="datinGeoRange" type="number" value="${profileInstance?.datinGeoRange}" required=""/>
 
 </div>
 
@@ -16,7 +16,7 @@
 		<g:message code="profile.datingAgeRangeEnd.label" default="Dating Age Range End" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="datingAgeRangeEnd" type="number" value="${profileInstance.datingAgeRangeEnd}" required=""/>
+	<g:field name="datingAgeRangeEnd" type="number" value="${profileInstance?.datingAgeRangeEnd}" required=""/>
 
 </div>
 
@@ -25,7 +25,7 @@
 		<g:message code="profile.datingAgeRangeStart.label" default="Dating Age Range Start" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="datingAgeRangeStart" type="number" value="${profileInstance.datingAgeRangeStart}" required=""/>
+	<g:field name="datingAgeRangeStart" type="number" value="${profileInstance?.datingAgeRangeStart}" required=""/>
 
 </div>
 
@@ -43,7 +43,7 @@
 		<g:message code="profile.height.label" default="Height" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="height" type="number" value="${profileInstance.height}" required=""/>
+	<g:field name="height" type="number" value="${profileInstance?.height}" required=""/>
 
 </div>
 
@@ -65,21 +65,13 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: profileInstance, field: 'profileId', 'error')} required">
-	<label for="profileId">
-		<g:message code="profile.profileId.label" default="Profile Id" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="profileId" required="" value="${profileInstance?.profileId}"/>
-
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: profileInstance, field: 'weight', 'error')} required">
 	<label for="weight">
 		<g:message code="profile.weight.label" default="Weight" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="weight" type="number" value="${profileInstance.weight}" required=""/>
+	<g:field name="weight" type="number" value="${profileInstance?.weight}" required=""/>
 
 </div>
 
