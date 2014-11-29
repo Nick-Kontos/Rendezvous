@@ -21,8 +21,6 @@ class ProfileController {
 
     @Transactional
     def save() {
-        
-		
 		Profile p=new Profile()
 		p.owner = session.user;
 		p.creationDate = new Date();
@@ -39,8 +37,6 @@ class ProfileController {
 		
 		p.save flush:true
 		
-        
-
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'profile.label', default: 'Profile'), profileInstance.id])
