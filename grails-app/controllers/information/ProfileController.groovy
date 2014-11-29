@@ -22,18 +22,27 @@ class ProfileController {
     @Transactional
     def save() {
 		Profile p=new Profile()
+		
 		p.owner = session.user;
+		
+		// Dates
 		p.creationDate = new Date();
-		p.profileId=params.profileId;
-		p.datinGeoRange=params.datinGeoRange;
-		p.datingAgeRangeStart=params.datingAgeRangeStart;
-		p.datingAgeRangeEnd=params.datingAgeRangeEnd;
-		p.hairColor=params.hairColor;
-		p.height=params.height;
-		p.hobbies=params.hobbies;
-		p.lastModDate=params.lastModDate;
-		p.mf=params.mf;
-		p.weight=params.weight;
+		p.lastModDate= new Date();
+		
+		// Strings
+		p.profileId = params.profileId;
+		p.mf = params.mf;
+		p.hobbies = params.hobbies;
+		p.hairColor = params.hairColor;
+		
+		// integer
+		p.datinGeoRange= Integer.parseInt(params.datinGeoRange);
+		p.datingAgeRangeStart= Integer.parseInt(params.datingAgeRangeStart);
+		p.datingAgeRangeEnd= Integer.parseInt(params.datingAgeRangeEnd);
+		p.weight= Integer.parseInt(params.weight);
+		
+		// double
+		p.height = Double.parseDouble(params.height);
 		
 		p.save flush:true
 		

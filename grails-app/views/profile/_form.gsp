@@ -2,15 +2,6 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: profileInstance, field: 'creationDate', 'error')} required">
-	<label for="creationDate">
-		<g:message code="profile.creationDate.label" default="Creation Date" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="creationDate" precision="day"  value="${profileInstance?.creationDate}"  />
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: profileInstance, field: 'datinGeoRange', 'error')} required">
 	<label for="datinGeoRange">
 		<g:message code="profile.datinGeoRange.label" default="Datin Geo Range" />
@@ -62,15 +53,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="hobbies" required="" value="${profileInstance?.hobbies}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: profileInstance, field: 'lastModDate', 'error')} required">
-	<label for="lastModDate">
-		<g:message code="profile.lastModDate.label" default="Last Mod Date" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="lastModDate" precision="day"  value="${profileInstance?.lastModDate}"  />
 
 </div>
 
