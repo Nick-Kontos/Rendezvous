@@ -32,6 +32,8 @@ class ProfileController {
         }
 		
 		Profile p=new Profile()
+		p.owner = session.user;
+		p.creationDate = new Date();
 		p.profileId=params.profileId;
 		p.datinGeoRange=params.datinGeoRange;
 		p.datingAgeRangeStart=params.datingAgeRangeStart;
