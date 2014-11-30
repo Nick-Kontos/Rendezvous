@@ -10,6 +10,55 @@
 </head>
 <body>
 	<h1>My Dates</h1>
+	<h3>Date Requests</h3>
+	<table class="table table-striped">
+		<tr>
+			<th>Action</th>
+			<th>Profile</th>
+			<th>Date</th>
+		</tr>
+		<g:each in="${requestDateList }">
+			<tr>
+				<td><g:link type="button" class="btn btn-success btn-sm"
+						controller="userDate" action="acceptDate"
+						params="${[acceptedDateProf1: it?.profile1, acceptedDateProf2: it?.profile2, acceptedDateDate: it?.dateTime] }">Accept</g:link>
+					<g:link type="button" class="btn btn-danger btn-sm"
+						controller="userDate" action="cancelDate"
+						params="${[canceledDateProf1: it?.profile1, canceledDateProf2: it?.profile2, canceledDateDate: it?.dateTime] }">Decline</g:link></td>
+				<td>
+					${it?.profile1 }
+				</td>
+				<td>
+					${it?.dateTime }
+				</td>
+			</tr>
+		</g:each>
+	</table>
+	<h3>Dates Pending Reply</h3>
+	<table class="table table-striped">
+		<tr>
+			<th>Action</th>
+			<th>Profile</th>
+			<th>Date</th>
+			<th>Location</th>
+		</tr>
+		<g:each in="${pendingDateList }">
+			<tr>
+				<td><g:link type="button" class="btn btn-danger btn-sm"
+						controller="userDate" action="cancelDate"
+						params="${[canceledDateProf1: it?.profile1, canceledDateProf2: it?.profile2, canceledDateDate: it?.dateTime] }">Cancel</g:link></td>
+				<td>
+					${it?.profile2 }
+				</td>
+				<td>
+					${it?.dateTime }
+				</td>
+				<td>
+					${it?.location }
+				</td>
+			</tr>
+		</g:each>
+	</table>
 	<h3>Upcoming Dates</h3>
 	<table class="table table-striped">
 		<tr>
@@ -30,13 +79,16 @@
 						<td><g:link type="button" class="btn btn-success btn-sm"
 								disabled="disabled" controller="userDate" action="payDate">Paid</g:link>
 							<g:link type="button" class="btn btn-danger btn-sm"
-								controller="userDate" action="cancelDate">Cancel</g:link></td>
+								controller="userDate" action="cancelDate"
+								params="${[canceledDateProf1: it.profile1, canceledDateProf2: it.profile2, canceledDateDate: it.dateTime] }">Cancel</g:link></td>
 					</g:if>
 					<g:else>
 						<td><g:link type="button" class="btn btn-success btn-sm"
-								controller="userDate" action="payDate">Pay</g:link> <g:link
-								type="button" class="btn btn-danger btn-sm" controller="userDate"
-								action="cancelDate">Cancel</g:link></td>
+								controller="userDate" action="payDate"
+								params="${[payedDateProf1: it.profile1, payedDateProf2: it.profile2, payedDateDate: it.dateTime] }">Pay</g:link>
+							<g:link type="button" class="btn btn-danger btn-sm"
+								controller="userDate" action="cancelDate"
+								params="${[canceledDateProf1: it.profile1, canceledDateProf2: it.profile2, canceledDateDate: it.dateTime] }">Cancel</g:link></td>
 					</g:else>
 					<td>
 						${it?.profile2 }
@@ -47,13 +99,16 @@
 						<td><g:link type="button" class="btn btn-success btn-sm"
 								disabled="disabled" controller="userDate" action="payDate">Paid</g:link>
 							<g:link type="button" class="btn btn-danger btn-sm"
-								controller="userDate" action="cancelDate">Cancel</g:link></td>
+								controller="userDate" action="cancelDate"
+								params="${[canceledDateProf1: it.profile1, canceledDateProf2: it.profile2, canceledDateDate: it.dateTime] }">Cancel</g:link></td>
 					</g:if>
 					<g:else>
 						<td><g:link type="button" class="btn btn-success btn-sm"
-								controller="userDate" action="payDate">Pay</g:link> <g:link
-								type="button" class="btn btn-danger btn-sm" controller="userDate"
-								action="cancelDate">Cancel</g:link></td>
+								controller="userDate" action="payDate"
+								params="${[payedDateProf1: it.profile1, payedDateProf2: it.profile2, payedDateDate: it.dateTime] }">Pay</g:link>
+							<g:link type="button" class="btn btn-danger btn-sm"
+								controller="userDate" action="cancelDate"
+								params="${[canceledDateProf1: it.profile1, canceledDateProf2: it.profile2, canceledDateDate: it.dateTime] }">Cancel</g:link></td>
 					</g:else>
 					<td>
 						${it?.profile1 }
