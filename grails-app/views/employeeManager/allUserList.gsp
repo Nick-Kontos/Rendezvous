@@ -57,7 +57,7 @@
 			</tbody>
 		</table>
 		<div class="pagination">
-			<g:paginate total="${likesInstanceCount ?: 0}" />
+			<g:paginate total="${userInstanceCount ?: 0}" />
 		</div>
 	</div>
 </body>

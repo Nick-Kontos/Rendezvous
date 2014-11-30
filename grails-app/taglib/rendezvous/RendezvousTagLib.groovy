@@ -14,7 +14,7 @@ class RendezvousTagLib {
 		}
 	}
 	def isEmployee={attrs,body->
-		if(Person.isEmployee(session.user))
+		if(Person.isEmployee(session.user)&&!Person.isManager(session.user))
 			out<<body();
 	}
 	def isManager={attrs,body->
