@@ -14,6 +14,10 @@ class LikesController {
         params.max = Math.min(max ?: 10, 100)
         respond Likes.list(params), model:[likesInstanceCount: Likes.count()]
     }
+	
+	def like(){
+		
+	}
 
     def show(Likes likesInstance) {
         respond likesInstance

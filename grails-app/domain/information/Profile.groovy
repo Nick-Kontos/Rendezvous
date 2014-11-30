@@ -14,6 +14,9 @@ class Profile {
 	String hairColor
 	Date creationDate
 	Date lastModDate
+	int age
+	String latitude
+	String longitude
 	static belongsTo = [owner:User]
 	static constraints = {
 	}
@@ -33,6 +36,9 @@ class Profile {
 		hairColor column: 'HairColor'
 		creationDate column: 'CreationDate'
 		lastModDate column: 'LastModDate'
+		age column: 'Age'
+		latitude column: 'Latitude'
+		longitude column: 'Longitude'
 	}
 	String toString(){
 		return profileId;

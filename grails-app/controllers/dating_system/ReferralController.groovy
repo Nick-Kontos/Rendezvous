@@ -14,6 +14,10 @@ class ReferralController {
         params.max = Math.min(max ?: 10, 100)
         respond Referral.list(params), model:[referralInstanceCount: Referral.count()]
     }
+	
+	def refer(){
+		
+	}
 
     def show(Referral referralInstance) {
         respond referralInstance
