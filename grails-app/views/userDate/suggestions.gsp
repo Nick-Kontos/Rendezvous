@@ -21,6 +21,7 @@
 				<td>${it.profileId }</td>
 				<td>${it.age }</td>
 				<td>${it.hobbies }</td>
+				<!--  -->
 			</tr>
 		</g:each>
 	</table>
