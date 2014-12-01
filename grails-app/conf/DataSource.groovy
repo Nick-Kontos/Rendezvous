@@ -23,6 +23,7 @@ environments {
 			driverClassName = "com.mysql.jdbc.Driver"
 			username = "root"
 			password = "password"
+			dialect = 'org.hibernate.dialect.MySQL5InnoDBDialect'
 		}
 	}
 	test {
