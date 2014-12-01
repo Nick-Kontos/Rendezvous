@@ -90,7 +90,7 @@ ul{
 
 .profileBox {
 	width: 15%;
-	margin: 10px 2.5%;
+	margin: 10px 2%;
 	height: 100px;
 	border: 1px solid black;
 	display: inline-block;
@@ -102,7 +102,7 @@ ul{
 
 .menuTile {
 	display: inline-block;
-	margin: 10px 2.5%;
+	margin: 10px 2%;
 	width: 20%; height : 100px;
 	border: 1px solid #000;
 	height: 100px;

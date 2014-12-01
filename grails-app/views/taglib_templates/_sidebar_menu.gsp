@@ -10,6 +10,10 @@
 </g:isUser>
 <g:isEmployee>
 <li><g:link controller="customerRepresentative">Dashboard</g:link></li>
+<li><g:link controller="customerRepresentative">Record Date</g:link></li>
+<li><g:link controller="customerRepresentative">Customer Information</g:link></li>
+<li><g:link controller="customerRepresentative">Mailing List</g:link></li>
+<li><g:link controller="customerRepresentative">View A Profile</g:link></li>
 </g:isEmployee>
 <g:isManager>
 <li><g:link controller="employeeManager">Dashboard</g:link></li>

@@ -9,10 +9,20 @@
 <title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 <body>
-	<h1>My Dates</h1>
-	<h3>Upcoming Dates</h3>
-	
-	<h3>Past Dates</h3>
-	
-	</body>
+	<h1>Your Suggestions</h1>
+	<table class="table table-striped">
+		<tr>
+			<th>Profile</th>
+			<th>Age</th>
+			<th>Hobbies</th>
+		</tr>
+		<g:each in="${suggestions }">
+			<tr>
+				<td>${it.profileId }</td>
+				<td>${it.age }</td>
+				<td>${it.hobbies }</td>
+			</tr>
+		</g:each>
+	</table>
+</body>
 </html>

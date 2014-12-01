@@ -16,6 +16,19 @@
 			</div>
 		</div>
 	</g:if>
+	<g:else>
+		<div class="row">
+			<div class="col-xs-4">
+				<g:link controller="userDate" action="requestDate" class="btn btn-primary" params="${[profileId: profile.profileId]}">Request Date</g:link>
+			</div>
+			<div class="col-xs-4">
+				<g:link controller="likes" action="like" class="btn btn-primary" params="${[profileId: profile.profileId]}">Like</g:link>
+			</div>
+			<div class="col-xs-4">
+				<g:link controller="referral" action="refer" class="btn btn-primary" params="${[profileId: profile.profileId]}">Refer</g:link>
+			</div>
+		</div>
+	</g:else>
 	<div class="row">
 		<div class="col-xs-4">pic</div>
 		<div class="col-xs-8">

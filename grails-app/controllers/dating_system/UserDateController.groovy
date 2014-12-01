@@ -7,6 +7,7 @@ import grails.transaction.Transactional
 import information.Profile
 import information.Account
 import information.User
+import java.text.SimpleDateFormat
 
 @Transactional(readOnly = true)
 class UserDateController {
@@ -60,6 +61,37 @@ class UserDateController {
 		redirect controller: 'UserDate', action: 'index'
 	}
 	
+	def dateSuggestions(){
+		Profile activeProfile = Profile.findByProfileId(session.activeProfileId)
+		def c = Profile.createCriteria()
+		def superSuggestions = c.list{
+			ne('mf', activeProfile.mf)
+			between('age', activeProfile.datingAgeRangeStart, activeProfile.datingAgeRangeEnd)
+			owner{
+				eq('ppp', 'Super-User')
+			}	
+		}
+		c = Profile.createCriteria()
+		def goodSuggestions = c.list{
+			ne('mf', activeProfile.mf)
+			between('age', activeProfile.datingAgeRangeStart, activeProfile.datingAgeRangeEnd)
+			owner{
+				eq('ppp', 'Good-User')
+			}
+		}
+		c = Profile.createCriteria()
+		def userSuggestions = c.list{
+			ne('mf', activeProfile.mf)
+			between('age', activeProfile.datingAgeRangeStart, activeProfile.datingAgeRangeEnd)
+			owner{
+				eq('ppp', 'User-User')
+			}
+		}
+		def suggestions = (superSuggestions.addAll(goodSuggestions)).addAll(userSuggestions)
+		render view: 'suggestions', model: [suggestions: suggestions]
+		
+	}
+	
 	def payDate(){
 
 		def accountList = Account.findAllByOwner(User.findBySsn(Profile.findByProfileId(session.activeProfileId).owner.ssn))
@@ -82,6 +114,13 @@ class UserDateController {
 		}
 		date.save(flush: true)
 		redirect controller: 'UserDate', action: 'index'
+	}
+	
+	def requestDate(){
+		SimpleDateFormat sdf = new SimpleDateFormat('MM-dd-yyyy HH:mm')
+		Date d = sdf.parse(params.date.month + "-" + params.date.day + "-" + params.date.year + " " + params.date.hour + ":" + params.date.minute)
+		UserDate userDate = new UserDate(profile1: Profile.findByProfileId(session.activeProfileId), Profile.findByProfileId(profile2: params.profileId), location: params.location, dateTime: d)
+		userDate.save(flush:true)
 	}
 
 	def show(UserDate userDateInstance) {
