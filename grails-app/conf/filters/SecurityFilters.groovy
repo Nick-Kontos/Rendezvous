@@ -8,7 +8,7 @@ class SecurityFilters {
 	def filters = {
 		userControllerCheck(controller:'user',action:'*'){
 			before={
-				if(!session.user&&actionName=='create')return true
+				if(!session.user&&(actionName=='create'||actionName=='save'))return true
 				else if(User.isEmployee(session.user)||User.isManager(session.user))return true;
 				else {
 					redirect(controller:'login',action: 'login')
