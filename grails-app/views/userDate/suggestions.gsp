@@ -18,7 +18,7 @@
 		</tr>
 		<g:each in="${suggestions }">
 			<tr>
-				<td>${it.profileId }</td>
+				<td><g:link controller="profile" action="show" id="${it.profileId }">${it.profileId }</g:link></td>
 				<td>${it.age }</td>
 				<td>${it.hobbies }</td>
 				<!--  -->

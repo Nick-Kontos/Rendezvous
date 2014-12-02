@@ -29,10 +29,10 @@ class AppController {
 		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
 			ip = request.getRemoteAddr();
 		}
-		if(ip){
-			session.geolocation = geoIpService.getLocation( ip )
-			println session.geolocation.longitude
-			println session.geolocation.longitude
+		if(ip != null || ip.length() != 0 || !("unknown".equalsIgnoreCase(ip))){
+			session.geolocation = geoIpService.getLocation(ip)
+			//println session.geolocation.longitude
+			//println session.geolocation.longitude
 			
 		}
 		session.activeProfileId=params.newProfileId;

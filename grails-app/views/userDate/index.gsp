@@ -123,7 +123,7 @@
 					<td>Not paid: Location Unavailable</td>
 				</g:else>
 
-				<td><g:if test="${it?.custRep != null }">
+				<td><g:if test="${it?.custRep != "NOT_ASSIGNED"  }">
 						${it?.custRep.firstName + it?.custRep.lastName }
 					</g:if> <g:else>
 						Representative not assigned
@@ -205,7 +205,7 @@
 						${it?.profile1 }
 					</td>
 				</g:else>
-				<td><g:if test="${it?.custRep != null }">
+				<td><g:if test="${it?.custRep != "NOT_ASSIGNED" }">
 						${it?.custRep.firstName + it?.custRep.lastName }
 					</g:if> <g:else>
 						Representative not assigned

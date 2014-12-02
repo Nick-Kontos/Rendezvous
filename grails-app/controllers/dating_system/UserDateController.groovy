@@ -87,7 +87,10 @@ class UserDateController {
 				eq('ppp', 'User-User')
 			}
 		}
-		def suggestions = (superSuggestions.addAll(goodSuggestions)).addAll(userSuggestions)
+		def suggestions = []
+		suggestions.addAll(superSuggestions)
+		suggestions.addAll(goodSuggestions)
+		suggestions.addAll(userSuggestions)
 		render view: 'suggestions', model: [suggestions: suggestions]
 		
 	}
@@ -116,11 +119,24 @@ class UserDateController {
 		redirect controller: 'UserDate', action: 'index'
 	}
 	
+	def requestForm(){
+		render view: 'requestDate', model: [profile2: params.profile2]
+	}
+	
 	def requestDate(){
 		SimpleDateFormat sdf = new SimpleDateFormat('MM-dd-yyyy HH:mm')
-		Date d = sdf.parse(params.date.month + "-" + params.date.day + "-" + params.date.year + " " + params.date.hour + ":" + params.date.minute)
-		UserDate userDate = new UserDate(profile1: Profile.findByProfileId(session.activeProfileId), Profile.findByProfileId(profile2: params.profileId), location: params.location, dateTime: d)
-		userDate.save(flush:true)
+		Date d = sdf.parse(params.date.month + "-" + params.date.day + "-" + params.date.year + " " + params.date.hours + ":" + params.date.minutes)
+		UserDate userDate = new UserDate(profile1: Profile.findByProfileId(session.activeProfileId), profile2: Profile.findByProfileId(params.profile2), 
+			location: params.location, dateTime: d, comments: 'None')
+		try{
+			userDate.validate();
+			
+			userDate.save(flush:true)
+			print userDate.errors
+		}catch(Exception e){
+			println e
+		}
+		redirect controller: 'UserDate', action: 'index'
 	}
 
 	def show(UserDate userDateInstance) {

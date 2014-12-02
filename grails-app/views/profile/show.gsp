@@ -19,7 +19,7 @@
 	<g:else>
 		<div class="row">
 			<div class="col-xs-4">
-				<g:link controller="userDate" action="requestDate" class="btn btn-primary" params="${[profileId: profile.profileId]}">Request Date</g:link>
+				<g:link controller="userDate" action="requestForm" class="btn btn-primary" params="${[profile2: profile.profileId]}">Request Date</g:link>
 			</div>
 			<div class="col-xs-4">
 				<g:link controller="likes" action="like" class="btn btn-primary" params="${[profileId: profile.profileId]}">Like</g:link>

@@ -1,3 +1,4 @@
+
 package information
 
 import java.util.Date;
@@ -15,6 +16,7 @@ class Profile {
 	Date creationDate
 	Date lastModDate
 	String location
+	int age
 	static belongsTo = [owner:User]
 	static constraints = {
 	}
@@ -35,6 +37,7 @@ class Profile {
 		creationDate column: 'CreationDate'
 		lastModDate column: 'LastModDate'
 		location column:"Location"
+		age column: 'Age'
 	}
 	String toString(){
 		return profileId;
