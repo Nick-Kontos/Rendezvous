@@ -4,6 +4,7 @@ package information
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import information.User
 
 @Transactional(readOnly = true)
 class UserController {
@@ -51,8 +52,9 @@ class UserController {
 		redirect controller:"profile", action:"create"
     }
 
-    def edit(User userInstance) {
-        respond userInstance
+    def edit() {
+        def userInstance= User.findWhere(ssn:session.user.ssn);
+		render view:'edit',model:[userInstance:userInstance];
     }
 
     @Transactional
