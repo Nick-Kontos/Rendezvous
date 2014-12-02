@@ -26,6 +26,9 @@
 		<div id="grailsLogo" role="banner">
 			<a href="http://grails.org"><asset:image src="grails_logo.png"
 					alt="Grails" /></a><input type="text" placeholder="Search">
+			<g:isUser>
+			<g:link controller="user" action="edit" class="pull-right">My Account</g:link>
+			</g:isUser>
 			<g:profileSelector></g:profileSelector>
 			<g:loggedIn>
 				<g:link controller="login" action="logout" class="pull-right logoutButton">logout</g:link>
