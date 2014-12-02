@@ -24,26 +24,31 @@ class UserController {
     }
 
     @Transactional
-    def save(User userInstance) {
-        if (userInstance == null) {
-            notFound()
-            return
-        }
+    def save() {
+        User p = new User()
+		println "enter save"
+		// String
+		p.ssn = params.ssn;
+		p.password = params.password;
+		p.firstName = params.firstName;
+		p.lastName = params.lastName;
+		p.street = params.street;
+		p.city = params.city;
+		p.state = params.state;
+		p.email = params.email;
+		p.telephone = params.telephone;
+		p.ppp = params.ppp;
+		
+		// Integer
+		p.zipCode = Integer.parseInt(params.zipCode);
+		p.rating = Integer.parseInt(params.rating);
 
-        if (userInstance.hasErrors()) {
-            respond userInstance.errors, view:'create'
-            return
-        }
-
-        userInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
-                redirect userInstance
-            }
-            '*' { respond userInstance, [status: CREATED] }
-        }
+		// Dates
+		p.dateOfLastAct = new Date();
+		
+		p.save flush:true
+		session.user=p;
+		redirect controller:"profile", action:"create"
     }
 
     def edit(User userInstance) {
