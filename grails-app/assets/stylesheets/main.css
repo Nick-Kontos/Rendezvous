@@ -27,7 +27,12 @@
 .width-60 {
 	width: 10%;
 }
-
+.width-90 {
+	width: 90%;
+}
+.width-100{
+	width:100%;
+}
 .bg-grey {
 	background-color: #ccc;
 }
@@ -54,6 +59,8 @@
 
 .contentBody {
 	background-color: #fff;
+	padding-bottom: 20px;
+	
 }
 
 .row {
@@ -107,7 +114,11 @@ ul{
 	border: 1px solid #000;
 	height: 100px;
 }
-
-.breadcrumbsBar {
-	border-bottom: 1px solid #000;
+.errorBox{
+	background-color: #f2dede;
+	border: 2px solid #ebccd1;
+}
+.successBox{
+	background-color: #dff0d8;
+	border: 2px solid #d6e9c6;
 }

@@ -6,12 +6,19 @@ import information.User
 
 class SecurityFilters {
 	def filters = {
-		noProfileCheck(controller:'app',action:'dashboard'){
-			
+		userControllerCheck(controller:'user',action:'*'){
+			before={
+				if(!session.user&&actionName=='create')return true
+				else if(User.isEmployee(session.user)||User.isManager(session.user))return true;
+				else {
+					redirect(controller:'login',action: 'login')
+					return false 
+				}
+			}
 		}
 		appLoginCheck(controller: 'app|referral|userDate|likes|profile', action: '*') {
 			before = {
-				
+
 				if (!session.user && !actionName.equals('login')&&!Person.isUser(session.user)) {
 					session.invalidate()
 					String u=request.forwardURI;
