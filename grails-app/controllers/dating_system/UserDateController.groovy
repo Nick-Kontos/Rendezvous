@@ -123,9 +123,10 @@ class UserDateController {
 		render view: 'requestDate', model: [profile2: params.profile2]
 	}
 	
+	@Transactional
 	def requestDate(){
 		SimpleDateFormat sdf = new SimpleDateFormat('MM-dd-yyyy HH:mm')
-		Date d = sdf.parse(params.date.month + "-" + params.date.day + "-" + params.date.year + " " + params.date.hours + ":" + params.date.minutes)
+		Date d = sdf.parse(params.date_month + "-" + params.date_day + "-" + params.date_year + " " + params.date.hours + ":" + params.date.minutes)
 		UserDate userDate = new UserDate(profile1: Profile.findByProfileId(session.activeProfileId), profile2: Profile.findByProfileId(params.profile2), 
 			location: params.location, dateTime: d, comments: 'None')
 		try{

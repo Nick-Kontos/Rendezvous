@@ -123,7 +123,7 @@
 					<td>Not paid: Location Unavailable</td>
 				</g:else>
 
-				<td><g:if test="${it?.custRep != "NOT_ASSIGNED"  }">
+				<td><g:if test="${it?.custRep != null }">
 						${it?.custRep.firstName + it?.custRep.lastName }
 					</g:if> <g:else>
 						Representative not assigned
@@ -131,7 +131,7 @@
 				<td>
 					${it?.dateTime }
 				</td>
-				<g:if test="${it?.bookingFee == -1.0 }">
+				<g:if test="${it?.bookingFee == null }">
 					<td>Fee not set</td>
 				</g:if>
 				<g:else>
@@ -143,7 +143,7 @@
 					${it?.comments }
 				</td>
 				<g:if test="${it?.profile1 == activeProfileId }">
-					<g:if test="${it?.user1Rating == -1 }">
+					<g:if test="${it?.user1Rating == null }">
 						<td>Not rated</td>
 					</g:if>
 					<g:else>
@@ -151,7 +151,7 @@
 							${it?.user1Rating }
 						</td>
 					</g:else>
-					<g:if test="${it?.user2Rating == -1 }">
+					<g:if test="${it?.user2Rating == null }">
 						<td>Not rated</td>
 					</g:if>
 					<g:else>
@@ -161,7 +161,7 @@
 					</g:else>
 				</g:if>
 				<g:else>
-					<g:if test="${it?.user2Rating == -1 }">
+					<g:if test="${it?.user2Rating == null }">
 						<td>Not rated</td>
 					</g:if>
 					<g:else>
@@ -169,7 +169,7 @@
 							${it?.user2Rating }
 						</td>
 					</g:else>
-					<g:if test="${it?.user1Rating == -1 }">
+					<g:if test="${it?.user1Rating == null }">
 						<td>Not rated</td>
 					</g:if>
 					<g:else>
@@ -205,7 +205,7 @@
 						${it?.profile1 }
 					</td>
 				</g:else>
-				<td><g:if test="${it?.custRep != "NOT_ASSIGNED" }">
+				<td><g:if test="${it?.custRep != null }">
 						${it?.custRep.firstName + it?.custRep.lastName }
 					</g:if> <g:else>
 						Representative not assigned
@@ -213,7 +213,7 @@
 				<td>
 					${it?.dateTime }
 				</td>
-				<g:if test="${it?.bookingFee == -1.0 }">
+				<g:if test="${it?.bookingFee == null }">
 					<td>Fee not set</td>
 				</g:if>
 				<g:else>
@@ -225,7 +225,7 @@
 					${it?.comments }
 				</td>
 				<g:if test="${it?.profile1 == activeProfileId }">
-					<g:if test="${it?.user1Rating == -1 }">
+					<g:if test="${it?.user1Rating == null }">
 						<td>Not rated</td>
 					</g:if>
 					<g:else>
@@ -233,7 +233,7 @@
 							${it?.user1Rating }
 						</td>
 					</g:else>
-					<g:if test="${it?.user2Rating == -1 }">
+					<g:if test="${it?.user2Rating == null }">
 						<td>Not rated</td>
 					</g:if>
 					<g:else>
@@ -243,7 +243,7 @@
 					</g:else>
 				</g:if>
 				<g:else>
-					<g:if test="${it?.user2Rating == -1 }">
+					<g:if test="${it?.user2Rating == null }">
 						<td>Not rated</td>
 					</g:if>
 					<g:else>
@@ -251,7 +251,7 @@
 							${it?.user2Rating }
 						</td>
 					</g:else>
-					<g:if test="${it?.user1Rating == -1 }">
+					<g:if test="${it?.user1Rating == null }">
 						<td>Not rated</td>
 					</g:if>
 					<g:else>

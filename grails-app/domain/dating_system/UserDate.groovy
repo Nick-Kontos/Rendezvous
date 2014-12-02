@@ -9,14 +9,23 @@ class UserDate implements Serializable{
 	Employee custRep
 	Date dateTime
 	String location
-	double bookingFee
+	BigDecimal bookingFee
 	String comments
-	int user1Rating
-	int user2Rating
+	Integer user1Rating
+	Integer user2Rating
 	boolean accepted
 	boolean profile1Paid;
 	boolean profile2Paid;
     static constraints = {
+		custRep nullable: true
+		comments nullable:true
+		user1Rating nullable: true
+		user2Rating nullable: true
+		accepted defaultValue:false
+		profile1Paid defaultValue:false
+		profile2Paid defaultValue:false
+		bookingFee nullable: true
+		location blank: true
     }
 	static mapping={
 		table 'Date'
@@ -24,15 +33,12 @@ class UserDate implements Serializable{
 		version false
 		profile1 column:'Profile1'
 		profile2 column:'Profile2'
-		custRep column:'CustRep', nullable: true, defaultValue: null
+		custRep  column:'CustRep'
 		dateTime column:'Date_Time'
-		location column:'Location', blank:true
-		bookingFee column:'BookingFee', defaultValue: -1.0
-		comments column:'Comments', nullable: true, defaultValue: null
-		user1Rating column:'User1Rating' , defaultValue: -1
-		user2Rating column:'User2Rating', defaultValue: -1
-		accepted defaultValue:false
-		profile1Paid defaultValue:false
-		profile2Paid defaultValue:false
+		location column:'Location'
+		bookingFee column:'BookingFee'
+		comments column:'Comments'
+		user1Rating column:'User1Rating'
+		user2Rating column:'User2Rating'
 	}
 }
