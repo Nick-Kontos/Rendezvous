@@ -1,54 +1,47 @@
 
-<%@ page import="dating_system.Likes" %>
+<%@ page import="dating_system.Likes"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'likes.label', default: 'Likes')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#list-likes" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="list-likes" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<table>
-			<thead>
-					<tr>
-					
-						<g:sortableColumn property="dateTime" title="${message(code: 'likes.dateTime.label', default: 'Date Time')}" />
-					
-						<th><g:message code="likes.likee.label" default="Likee" /></th>
-					
-						<th><g:message code="likes.liker.label" default="Liker" /></th>
-					
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${likesInstanceList}" status="i" var="likesInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${likesInstance.id}">${fieldValue(bean: likesInstance, field: "dateTime")}</g:link></td>
-					
-						<td>${fieldValue(bean: likesInstance, field: "likee")}</td>
-					
-						<td>${fieldValue(bean: likesInstance, field: "liker")}</td>
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
-			<div class="pagination">
-				<g:paginate total="${likesInstanceCount ?: 0}" />
-			</div>
-		</div>
-	</body>
+<head>
+<meta name="layout" content="main">
+<g:set var="entityName"
+	value="${message(code: 'likes.label', default: 'Likes')}" />
+<title><g:message code="default.list.label" args="[entityName]" /></title>
+</head>
+<body>
+	<h1>People Who You Have Liked</h1>
+	<table class="table table-striped">
+		<tr>
+			<th>Profile</th>
+			<th>Date</th>
+		</tr>
+		<g:each in="${yLike}">
+			<tr>
+				<td>
+				<g:link controller="profile" action="show" id="${it?.likee}">${it?.likee}</g:link>
+				</td>
+				<td>
+					${it?.dateTime}
+				</td>
+			</tr>
+		</g:each>
+	</table>
+	<h1>People Who Like You</h1>
+	<table class="table table-striped">
+		<tr>
+			<th>Profile</th>
+			<th>Date</th>
+		</tr>
+		<g:each in="${lYou}">
+			<tr>
+				<td>
+				<g:link controller="profile" action="show" id="${it?.liker}">${it?.liker}</g:link>
+				</td>
+				<td>
+					${it?.dateTime}
+				</td>
+			</tr>
+		</g:each>
+	</table>
+</body>
 </html>
