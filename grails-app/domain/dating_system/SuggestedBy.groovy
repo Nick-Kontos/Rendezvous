@@ -16,8 +16,8 @@ class SuggestedBy implements Serializable {
 		id composite: ['custRep', 'profileB','profileC','dateTime'],generator:'assigned'
 		version false
 		custRep column:'CustRep'
-		profileB column:'ProfileB'
-		profileC column:'ProfileC'
+		profileB column:'Profile1'
+		profileC column:'Profile2'
 		dateTime column:'Date_Time'
 	}
 }
