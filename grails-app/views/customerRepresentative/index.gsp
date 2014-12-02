@@ -19,7 +19,7 @@
 				class="menuTile">Customer Information</g:link>
 			<g:link controller="customerRepresentative" action="mailingList"
 				class="menuTile">Mailing List</g:link>
-			<g:link controller="customerRepresentative" action="viewProfile"
+			<g:link controller="customerRepresentative" action="viewProfileSuggestions"
 				class="menuTile">View A Profile</g:link>
 		</div>
 		<div class="row">
