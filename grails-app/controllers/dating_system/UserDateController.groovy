@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat
 
 @Transactional(readOnly = true)
 class UserDateController {
-
+	def dateService
 	static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
 	def index(Integer max) {
@@ -62,35 +62,7 @@ class UserDateController {
 	}
 	
 	def dateSuggestions(){
-		Profile activeProfile = Profile.findByProfileId(session.activeProfileId)
-		def c = Profile.createCriteria()
-		def superSuggestions = c.list{
-			ne('mf', activeProfile.mf)
-			between('age', activeProfile.datingAgeRangeStart, activeProfile.datingAgeRangeEnd)
-			owner{
-				eq('ppp', 'Super-User')
-			}	
-		}
-		c = Profile.createCriteria()
-		def goodSuggestions = c.list{
-			ne('mf', activeProfile.mf)
-			between('age', activeProfile.datingAgeRangeStart, activeProfile.datingAgeRangeEnd)
-			owner{
-				eq('ppp', 'Good-User')
-			}
-		}
-		c = Profile.createCriteria()
-		def userSuggestions = c.list{
-			ne('mf', activeProfile.mf)
-			between('age', activeProfile.datingAgeRangeStart, activeProfile.datingAgeRangeEnd)
-			owner{
-				eq('ppp', 'User-User')
-			}
-		}
-		def suggestions = []
-		suggestions.addAll(superSuggestions)
-		suggestions.addAll(goodSuggestions)
-		suggestions.addAll(userSuggestions)
+		def suggestions=dateService.getDateSuggestions(session.activeProfileId);		
 		render view: 'suggestions', model: [suggestions: suggestions]
 		
 	}
