@@ -93,6 +93,9 @@ ul{
 	margin: 0;
 	padding: 0;
 }
+label{
+	width: 150px;
+}
 a{
 	color: #a00;
 }
@@ -127,6 +130,9 @@ a:HOVER{
 	margin: 0;
 	padding: 5px;
 	right: 0;
+}
+.navTop{
+	background-color: #700;
 }
 .errorBox{
 	background-color: #f2dede;

@@ -23,9 +23,9 @@
 </head>
 <body>
 	<div class="container">
-		<div id="RendezvousLogo" role="banner">
+		<div id="RendezvousLogo" role="banner" class="navTop row">
 			<a><asset:image src="rendezvous_logo.png"
-					alt="Rendezvous" /></a><input type="text" placeholder="Search">
+					alt="Rendezvous" /></a>
 			<g:profileSelector></g:profileSelector>
 			<g:loggedIn>
 				<g:link controller="login" action="logout" class="pull-right logoutButton">logout</g:link>
@@ -35,7 +35,7 @@
 			</g:isUser>
 		</div>
 		
-		<div class="row">
+		<div class="row" style="padding-left: 0;">
 			<div id="sideNavbar" class="col-xs-2 sidebar">
 				<g:sidebar></g:sidebar>
 			</div>

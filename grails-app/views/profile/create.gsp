@@ -9,6 +9,10 @@
 </head>
 <body>
 	<div id="create-profile" class="content scaffold-create" role="main">
+
+		<div>
+			<g:link controller="app">Back</g:link>
+		</div>
 		<h1>
 			<g:message code="default.create.label" args="[entityName]" />
 		</h1>
@@ -41,7 +45,7 @@
 				<g:render template="form" />
 			</fieldset>
 			<fieldset class="buttons">
-				<g:submitButton name="create" class="save"
+				<g:submitButton name="create" class="save btn btn-primary"
 					value="${message(code: 'default.button.create.label', default: 'Create')}" />
 			</fieldset>
 		</g:form>
