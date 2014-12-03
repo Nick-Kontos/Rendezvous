@@ -14,9 +14,9 @@
 			</h1>
 			<hr>
 			<g:link controller="customerRepresentative" action="recordDate"
-				class="menuTile">Record Date</g:link>
+				class="menuTile"><i class="fa fa-calendar"></i><p>Record Date</p></g:link>
 			<g:link controller="customerRepresentative" action="customerMenu"
-				class="menuTile">Customer Information</g:link>
+				class="menuTile"><p>Customer Information</p></g:link>
 			<g:link controller="customerRepresentative" action="mailingList"
 				class="menuTile">Mailing List</g:link>
 			<g:link controller="customerRepresentative" action="viewProfileSuggestions"

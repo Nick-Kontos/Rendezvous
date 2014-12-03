@@ -2,7 +2,9 @@ package employee_system
 
 import java.text.SimpleDateFormat;
 
+import dating_system.SuggestedBy;
 import dating_system.UserDate;
+import information.Employee;
 import information.Profile;
 import information.User;
 
@@ -51,7 +53,7 @@ class CustomerRepresentativeController {
 				throw new Exception(date.errors)
 			}
 			else
-			date.save(flush:true);
+				date.save(flush:true);
 			redirect action:'recordDate';
 		}
 		catch(Exception e){
@@ -68,7 +70,11 @@ class CustomerRepresentativeController {
 		try{
 			String profileId=params.profileId;
 			def suggestions=dateService.getDateSuggestions(profileId);
-			render template:'suggestionList',model:[suggestions:suggestions];
+			def prev=SuggestedBy.createCriteria().list(){
+				eq('profileC',Profile.findWhere(profileId:profileId))
+				order("dateTime","desc")
+			}
+			render template:'suggestionList',model:[suggestions:suggestions,searchId:profileId,prevSuggestions:prev];
 		}
 		catch(Exception ex){
 			render ex.getMessage();
@@ -76,7 +82,16 @@ class CustomerRepresentativeController {
 	}
 
 	def makeSuggestion(){
-		
+		Employee custRep=session.user;
+		Profile pB=Profile.findWhere(profileId:params.profileB)
+		Profile pC=Profile.findWhere(profileId:params.profileC)
+		SuggestedBy s=new SuggestedBy();
+		s.custRep=custRep;
+		s.profileB=pB;
+		s.profileC=pC;
+		s.dateTime=new Date();
+		s.save(flush:true);
+		render params.profileB+" referred to "+params.profileC;
 	}
 	private UserDate retrieveFromParams(){
 		String d=params.date;

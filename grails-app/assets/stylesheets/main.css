@@ -79,7 +79,6 @@ table {
 
 h1, h2, h3 {
 	font-family: arial;
-	font-style: italic;
 	margin: 0;
 	padding: 0;
 }
@@ -133,6 +132,12 @@ a:HOVER{
 }
 .navTop{
 	background-color: #700;
+}
+.navTop a{
+	color: #ccc;	
+}
+.navTop a:HOVER{
+	color: #fff;
 }
 .errorBox{
 	background-color: #f2dede;

@@ -10,7 +10,7 @@
   <g:each in="${profiles}" var="p">
   <g:link controller="app" action="changeActiveProfile" params="[newProfileId:p]" class="profileBox"><i class="fa fa-group fa-lg"></i><p>${p}</p></g:link>
   </g:each>
-  <g:link controller="profile" action="create" class="profileBox"><i class="fa fa-plus fa-lg"></i></g:link>
+  <g:link controller="profile" action="create" class="profileBox"><i class="fa fa-plus fa-lg"></i><p>Add Profile</p></g:link>
   </div>
 </body>
 </html>
