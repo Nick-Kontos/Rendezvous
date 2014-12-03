@@ -16,8 +16,11 @@ class UserController {
         respond User.list(params), model:[userInstanceCount: User.count()]
     }
 
-    def show(User userInstance) {
-        respond userInstance
+    def show() {
+		String ssn=params.id;
+		User u=User.findWhere(ssn:ssn);
+		if(!u)render "User not found";
+        respond u
     }
 
     def create() {
