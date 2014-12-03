@@ -21,8 +21,11 @@ class ReferralController {
 		def myReferredList = c1.list{
 			eq('profileA', currentProfile)
 		}
-        
-        render view: 'index', model:[referralList: referralList, myReferredList: myReferredList]
+        def c2 = SuggestedBy.createCriteria()
+		def repReferralList = c2.list{
+			eq('profileC', currentProfile)
+		}
+        render view: 'index', model:[referralList: referralList, myReferredList: myReferredList, repReferralList: repReferralList]
     }
 	
 	def referForm(){
