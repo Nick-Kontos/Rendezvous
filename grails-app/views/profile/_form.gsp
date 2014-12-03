@@ -1,10 +1,18 @@
 <%@ page import="information.Profile" %>
 
 
+<div class="fieldcontain ${hasErrors(bean: profileInstance, field: 'age', 'error')} required">
+	<label for="age">
+		<g:message code="profile.age.label" default="Age" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="age" type="number" value="${profileInstance?.age}" required=""/>
+
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: profileInstance, field: 'datinGeoRange', 'error')} required">
 	<label for="datinGeoRange">
-		<g:message code="profile.datinGeoRange.label" default="Datin Geo Range" />
+		<g:message code="profile.datinGeoRange.label" default="Dating Geo Range" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="datinGeoRange" type="number" value="${profileInstance?.datinGeoRange}" required=""/>
@@ -43,7 +51,7 @@
 		<g:message code="profile.height.label" default="Height" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="height" type="number" value="${profileInstance?.height}" required=""/>
+	<g:field name="height" type="number" step="0.01" value="${profileInstance?.height}" required=""/>
 
 </div>
 

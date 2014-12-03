@@ -27,7 +27,7 @@ class SecurityFilters {
 					redirect(controller:'login',action: 'login', params: [requestUri: u])
 					return false
 				}
-				else if(controllerName.equals("profile")&&actionName.equals("create")){
+				else if(controllerName.equals("profile")&&(actionName.equals("create")||actionName=='save')){
 					return true;
 				}
 				else if(!session.activeProfileId&&!actionName.equals('dashboard')&&!actionName.equals('changeActiveProfile')){
