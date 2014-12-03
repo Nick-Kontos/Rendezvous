@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>People Who You Have Liked</h1>
-	<table class="table table-striped">
+	<table class="table table-hover">
 		<tr>
 			<th>Profile</th>
 			<th>Date</th>
@@ -27,7 +27,7 @@
 		</g:each>
 	</table>
 	<h1>People Who Like You</h1>
-	<table class="table table-striped">
+	<table class="table table-hover">
 		<tr>
 			<th>Profile</th>
 			<th>Date</th>

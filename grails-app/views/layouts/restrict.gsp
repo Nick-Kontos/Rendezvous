@@ -23,9 +23,9 @@
 </head>
 <body>
 	<div class="container">
-		<div id="grailsLogo" role="banner">
-			<a href="http://grails.org"><asset:image src="grails_logo.png"
-					alt="Grails" /></a><input type="text" placeholder="Search">
+		<div id="RendezvousLogo" role="banner">
+			<a><asset:image src="rendezvous_logo.png"
+					alt="Rendezvous" /></a><input type="text" placeholder="Search">
 			<g:loggedIn>
 				<g:link controller="login" action="logout" class="pull-right logoutButton">logout</g:link>
 			</g:loggedIn>

@@ -14,7 +14,7 @@
 <link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}"
 	type="image/x-icon">
 <g:javascript library="jquery" plugin="jquery" />
-<asset:stylesheet src="bootstrap.min.css" />
+<asset:stylesheet src="bootstrap.css" />
 <asset:stylesheet src="main.css" />
 <asset:stylesheet src="font-awesome.min.css" />
 <asset:javascript src="bootbox.min.js" />
@@ -23,9 +23,9 @@
 </head>
 <body>
 	<div class="container">
-		<div id="grailsLogo" role="banner">
-			<a href="http://grails.org"><asset:image src="grails_logo.png"
-					alt="Grails" /></a><input type="text" placeholder="Search">
+		<div id="RendezvousLogo" role="banner">
+			<a><asset:image src="rendezvous_logo.png"
+					alt="Rendezvous" /></a><input type="text" placeholder="Search">
 			<g:profileSelector></g:profileSelector>
 			<g:loggedIn>
 				<g:link controller="login" action="logout" class="pull-right logoutButton">logout</g:link>
@@ -34,6 +34,7 @@
 			<g:link controller="user" action="edit" class="pull-right" style="padding-right:10px">My Account</g:link>
 			</g:isUser>
 		</div>
+		
 		<div class="row">
 			<div id="sideNavbar" class="col-xs-2 sidebar">
 				<g:sidebar></g:sidebar>
@@ -44,6 +45,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display: none;">
 			<g:message code="spinner.alt" default="Loading&hellip;" />

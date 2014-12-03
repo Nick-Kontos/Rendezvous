@@ -42,7 +42,7 @@
 }
 
 .sidebar {
-	background-color: #fff;
+	background-color: rgba(245, 245, 245, 0.4);
 }
 
 .sidebar ul {
@@ -58,7 +58,7 @@
 }
 
 .contentBody {
-	background-color: #fff;
+	background-color: rgba(245, 245, 245, 0.4);
 	padding-bottom: 20px;
 	
 }
@@ -77,6 +77,8 @@ table {
 }
 
 h1, h2, h3 {
+	font-family: arial;
+	font-style: italic;
 	margin: 0;
 	padding: 0;
 }
