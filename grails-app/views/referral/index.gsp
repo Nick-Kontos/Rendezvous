@@ -11,7 +11,7 @@
 	<table class="table table-striped">
 			<tr>
 				<th>Profile</th>
-				<th>Referrer</th>
+				<th>Suggested By</th>
 				<th>Date Referred</th>
 			</tr>
 		<g:each in="${referralList}">
@@ -24,6 +24,27 @@
 				</td>
 				<td>
 					${it.dateTime}
+				</td>
+			</tr>
+		</g:each>
+	</table>
+	<h1>Profiles Suggested by Date Experts</h1>
+	<table class="table table-striped">
+			<tr>
+				<th>Profile</th>
+				<th>Suggested By</th>
+				<th>Date Suggested</th>
+			</tr>
+		<g:each in="${repReferralList}">
+			<tr>
+				<td>
+					<g:link controller="profile" action="show" id="${it?.profileB }">${it?.profileB}</g:link>
+				</td>
+				<td>
+					 ${it?.custRep.firstName + " " + it?.custRep.lastName}
+				</td>
+				<td>
+					${it?.dateTime}
 				</td>
 			</tr>
 		</g:each>
