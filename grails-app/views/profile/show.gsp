@@ -12,7 +12,7 @@
 	<g:if test="${profileOwner}">
 		<div class="row">
 			<div class="col-xs-4">
-				<g:link controller="profile" action="edit" class="btn btn-primary">Edit</g:link>
+				<g:link controller="profile" action="edit" class="btn btn-primary">Edit Profile</g:link>
 			</div>
 		</div>
 	</g:if>
@@ -30,7 +30,7 @@
 		</div>
 	</g:else>
 	<div class="row">
-		<div class="col-xs-4">pic</div>
+		<div class="col-xs-4">Profile Picture<input type="file"title="Change Profile Picture"></div>
 		<div class="col-xs-8">
 			<div class="panel">
 				<div class="row">
