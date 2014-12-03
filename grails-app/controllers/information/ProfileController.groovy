@@ -19,6 +19,7 @@ class ProfileController {
 
     @Transactional
     def save() {
+		println "Save"
 		Profile p = new Profile()
 		
 		p.owner = session.user;
@@ -38,7 +39,7 @@ class ProfileController {
 		p.datingAgeRangeStart= Integer.parseInt(params.datingAgeRangeStart);
 		p.datingAgeRangeEnd= Integer.parseInt(params.datingAgeRangeEnd);
 		p.weight= Integer.parseInt(params.weight);
-		
+		p.age=Integer.parseInt(params.age);
 		// double
 		p.height = Double.parseDouble(params.height);
 		
