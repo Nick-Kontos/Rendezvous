@@ -59,8 +59,11 @@ class CustomerRepresentativeController {
 			render view:'adoptDateForm',model:[date:date,errorMessage:e.getMessage()]
 		}
 	}
-	def viewProfile(){
+	
+	def viewProfileSuggestions(){
+		
 	}
+	
 	private UserDate retrieveFromParams(){
 		String d=params.date;
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")

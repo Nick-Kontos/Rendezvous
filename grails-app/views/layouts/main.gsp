@@ -30,6 +30,9 @@
 			<g:loggedIn>
 				<g:link controller="login" action="logout" class="pull-right logoutButton">logout</g:link>
 			</g:loggedIn>
+			<g:isUser>
+			<g:link controller="user" action="edit" class="pull-right" style="padding-right:10px">My Account</g:link>
+			</g:isUser>
 		</div>
 		<div class="row">
 			<div id="sideNavbar" class="col-xs-2 sidebar">

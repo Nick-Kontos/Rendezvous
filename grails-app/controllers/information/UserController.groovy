@@ -4,6 +4,7 @@ package information
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import information.User
 
 @Transactional(readOnly = true)
 class UserController {
@@ -24,52 +25,65 @@ class UserController {
     }
 
     @Transactional
-    def save(User userInstance) {
-        if (userInstance == null) {
-            notFound()
-            return
-        }
+    def save() {
+        User p = new User()
+		
+		// String
+		p.ssn = params.ssn;
+		p.password = params.password;
+		p.firstName = params.firstName;
+		p.lastName = params.lastName;
+		p.street = params.street;
+		p.city = params.city;
+		p.state = params.state;
+		p.email = params.email;
+		p.telephone = params.telephone;
+		p.ppp = params.ppp;
+		
+		// Integer
+		p.zipCode = Integer.parseInt(params.zipCode);
 
-        if (userInstance.hasErrors()) {
-            respond userInstance.errors, view:'create'
-            return
-        }
-
-        userInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
-                redirect userInstance
-            }
-            '*' { respond userInstance, [status: CREATED] }
-        }
+		// Dates
+		p.dateOfLastAct = new Date();
+		
+		p.save flush:true
+		session.user=p;
+		redirect controller:"profile", action:"create"
     }
 
-    def edit(User userInstance) {
-        respond userInstance
+    def edit() {
+        def userInstance= User.findWhere(ssn:session.user.ssn);
+		render view:'edit',model:[userInstance:userInstance];
     }
 
     @Transactional
-    def update(User userInstance) {
-        if (userInstance == null) {
-            notFound()
-            return
-        }
+    def update() {
+        
+		def p = User.findWhere(ssn:session.user.ssn);
+		
+		// String
+		p.city = params.city;
+		p.email = params.email;
+		p.firstName = params.firstName;
+		p.lastName = params.lastName;
+		p.password = params.password;
+		p.ppp = params.ppp;
+		p.ssn = params.ssn;
+		p.state = params.state;
+		p.street = params.street;
+		p.telephone = params.telephone;
+		
+		// Integer
+		p.zipCode = Integer.parseInt(params.zipCode);
 
-        if (userInstance.hasErrors()) {
-            respond userInstance.errors, view:'edit'
-            return
-        }
-
-        userInstance.save flush:true
+		p.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
-                redirect userInstance
+                flash.message = "Account Successfully Updated";
+                redirect action:"edit", model:[userInstance:p]
             }
-            '*'{ respond userInstance, [status: OK] }
+            '*'{ respond p, [status: OK] }
         }
     }
 

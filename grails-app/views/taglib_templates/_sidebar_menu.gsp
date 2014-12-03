@@ -3,6 +3,7 @@
 		<li>Sidebar Menu</li>
 		<g:isUser>
 			<li><g:link controller="app" action="dashboard">Dashboard</g:link></li>
+			<li><g:link controller="Profile" action="show" id="${session.activeProfileId }">My Profile</g:link></li>
 			<li><g:link controller="referral">Referrals</g:link></li>
 			<li><g:link controller="userDate">Dates</g:link></li>
 			<li><g:link controller="likes">Likes</g:link></li>

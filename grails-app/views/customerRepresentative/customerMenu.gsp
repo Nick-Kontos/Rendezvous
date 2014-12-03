@@ -4,22 +4,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <meta name="layout" content="main" />
 <title>Customer Menu</title>
+<script type="text/javascript">
+	$(function() {
+		$("#viewUserButton").click(
+				function() {
+					bootbox.prompt("Enter user's SSN: ", function(ssn) {
+						$("#showForm").attr("action",
+								($("#showForm").attr("action") + '/' + ssn))
+						$("#showForm").submit()
+					})
+				});
+	});
+</script>
 </head>
 <body>
 	<div class="body">
 		<div class="row">
-			<h1>
-				Select A Customer Action				
-			</h1>
-			<hr>
-			<g:link controller="user" action="create"
-				class="menuTile">Add User</g:link>
-			<g:link controller="customerRepresentative" action="viewUser"
-				class="menuTile">View/Edit User</g:link>
+			<div class="col-lg-12">
+				<h1>Select A Customer Action</h1>
+				<hr>
+				<g:link controller="user" action="create" class="menuTile">Add User</g:link>
+				<a id="viewUserButton" class="menuTile" href="#">View User</a>
+			</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-12"></div>
-		</div>
+		<g:form name="showForm" controller="user" action="show">
+		</g:form>
 	</div>
 </body>
 </html>

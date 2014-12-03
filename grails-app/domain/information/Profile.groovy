@@ -19,6 +19,7 @@ class Profile {
 	int age
 	static belongsTo = [owner:User]
 	static constraints = {
+		location nullable:true
 	}
 	static mapping={
 		table 'Profile'

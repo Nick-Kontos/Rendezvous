@@ -11,15 +11,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'dateOfLastAct', 'error')} required">
-	<label for="dateOfLastAct">
-		<g:message code="user.dateOfLastAct.label" default="Date Of Last Act" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="dateOfLastAct" precision="day"  value="${userInstance?.dateOfLastAct}"  />
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'email', 'error')} required">
 	<label for="email">
 		<g:message code="user.email.label" default="Email" />
@@ -62,15 +53,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="ppp" required="" value="${userInstance?.ppp}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'rating', 'error')} required">
-	<label for="rating">
-		<g:message code="user.rating.label" default="Rating" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="rating" type="number" value="${userInstance.rating}" required=""/>
 
 </div>
 
