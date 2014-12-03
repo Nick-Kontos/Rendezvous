@@ -7,7 +7,7 @@ import information.Profile;
 import information.User;
 
 class CustomerRepresentativeController {
-
+	def dateService;
 	def index() {
 		render view:'index',model:[employee:session.user]
 	}
@@ -51,7 +51,7 @@ class CustomerRepresentativeController {
 				throw new Exception(date.errors)
 			}
 			else
-				date.save(flush:true);
+			date.save(flush:true);
 			redirect action:'recordDate';
 		}
 		catch(Exception e){
@@ -59,11 +59,22 @@ class CustomerRepresentativeController {
 			render view:'adoptDateForm',model:[date:date,errorMessage:e.getMessage()]
 		}
 	}
-	
+
 	def viewProfileSuggestions(){
-		
+		render view:'viewProfileSuggestions';
 	}
-	
+
+	def getSuggestions(){
+		try{
+			String profileId=params.profileId;
+			def suggestions=dateService.getDateSuggestions(profileId);
+			render template:'suggestionList',model:[suggestions:suggestions];
+		}
+		catch(Exception ex){
+			render ex.getMessage();
+		}
+	}
+
 	private UserDate retrieveFromParams(){
 		String d=params.date;
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")

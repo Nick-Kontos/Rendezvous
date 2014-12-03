@@ -122,3 +122,7 @@ ul{
 	background-color: #dff0d8;
 	border: 2px solid #d6e9c6;
 }
+.border-bottom{
+	padding-bottom:10px;
+	border-bottom: 1px solid #ccc;
+}
