@@ -4,26 +4,47 @@
 <html>
 <head>
 <meta name="layout" content="main">
-<g:set var="entityName"
-	value="${message(code: 'referral.label', default: 'Referral')}" />
-<title><g:message code="default.list.label" args="[entityName]" /></title>
+<title>Referrals</title>
 </head>
 <body>
 	<h1>My Referrals</h1>
-	<table>
-		<thead>
+	<table class="table table-striped">
 			<tr>
-				<td>Profile</td>
-				<td>Referrer</td>
+				<th>Profile</th>
+				<th>Referrer</th>
+				<th>Date Referred</th>
 			</tr>
-		</thead>
-		<g:each in="${referralInstanceList}" var="r">
+		<g:each in="${referralList}">
 			<tr>
 				<td>
-					${r.profileC}
+					<g:link controller="profile" action="show" id="${it?.profileB }">${it.profileB}</g:link>
 				</td>
 				<td>
-					${r.profileA}
+					<g:link controller="profile" action="show" id="${it?.profileA }">${it.profileA}</g:link>
+				</td>
+				<td>
+					${it.dateTime}
+				</td>
+			</tr>
+		</g:each>
+	</table>
+	<h1>History of Profiles Referred</h1>
+	<table class="table table-striped">
+			<tr>
+				<th>Referred</th>
+				<th>Referred To</th>
+				<th>Date Referred</th>
+			</tr>
+		<g:each in="${myReferredList}">
+			<tr>
+				<td>
+					<g:link controller="profile" action="show" id="${it?.profileB }">${it.profileB}</g:link>
+				</td>
+				<td>
+					<g:link controller="profile" action="show" id="${it?.profileC }">${it.profileC}</g:link>
+				</td>
+				<td>
+					${it.dateTime}
 				</td>
 			</tr>
 		</g:each>

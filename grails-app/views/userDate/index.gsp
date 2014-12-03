@@ -26,7 +26,7 @@
 						controller="userDate" action="cancelDate"
 						params="${[canceledDateProf1: it?.profile1, canceledDateProf2: it?.profile2, canceledDateDate: it?.dateTime] }">Decline</g:link></td>
 				<td>
-					${it?.profile1 }
+					<g:link controller="profile" action="show" id="${it.profile1 }">${it?.profile1 }</g:link>
 				</td>
 				<td>
 					${it?.dateTime }
@@ -48,7 +48,7 @@
 						controller="userDate" action="cancelDate"
 						params="${[canceledDateProf1: it?.profile1, canceledDateProf2: it?.profile2, canceledDateDate: it?.dateTime] }">Cancel</g:link></td>
 				<td>
-					${it?.profile2 }
+					<g:link controller="profile" action="show" id="${it?.profile2 }">${it?.profile2 }</g:link>
 				</td>
 				<td>
 					${it?.dateTime }
@@ -75,13 +75,20 @@
 		<g:each in="${upcomingDateList }">
 			<tr>
 				<g:if test="${it?.profile1?.profileId == activeProfileId }">
-					<g:if test="${!(it?.accepted) || it?.profile1Paid}">
+					<g:if test="${it?.custRep == null }">
+						<td><g:link type="button" class="btn btn-success btn-sm"
+								disabled="disabled" controller="userDate" action="payDate">Rep not assigned</g:link>
+							<g:link type="button" class="btn btn-danger btn-sm"
+								controller="userDate" action="cancelDate"
+								params="${[canceledDateProf1: it.profile1, canceledDateProf2: it.profile2, canceledDateDate: it.dateTime] }">Cancel</g:link></td>
+					</g:if>
+					<g:elseif test="${!(it?.accepted) || it?.profile1Paid}">
 						<td><g:link type="button" class="btn btn-success btn-sm"
 								disabled="disabled" controller="userDate" action="payDate">Paid</g:link>
 							<g:link type="button" class="btn btn-danger btn-sm"
 								controller="userDate" action="cancelDate"
 								params="${[canceledDateProf1: it.profile1, canceledDateProf2: it.profile2, canceledDateDate: it.dateTime] }">Cancel</g:link></td>
-					</g:if>
+					</g:elseif>
 					<g:else>
 						<td><g:link type="button" class="btn btn-success btn-sm"
 								controller="userDate" action="payDate"
@@ -91,17 +98,25 @@
 								params="${[canceledDateProf1: it.profile1, canceledDateProf2: it.profile2, canceledDateDate: it.dateTime] }">Cancel</g:link></td>
 					</g:else>
 					<td>
-						${it?.profile2 }
+						<g:link controller="profile" action="show" id="${it?.profile2 }">${it?.profile2 }</g:link>
 					</td>
 				</g:if>
 				<g:else>
-					<g:if test="${!(it?.accepted) || it?.profile2Paid}">
+				<g:if test="${it?.custRep == null }">
+						<td><g:link type="button" class="btn btn-success btn-sm"
+								disabled="disabled" controller="userDate" action="payDate">Rep not assigned</g:link>
+							<g:link type="button" class="btn btn-danger btn-sm"
+								controller="userDate" action="cancelDate"
+								params="${[canceledDateProf1: it.profile1, canceledDateProf2: it.profile2, canceledDateDate: it.dateTime] }">Cancel</g:link></td>
+					</g:if>
+					<g:elseif test="${!(it?.accepted) || it?.profile2Paid}">
+					
 						<td><g:link type="button" class="btn btn-success btn-sm"
 								disabled="disabled" controller="userDate" action="payDate">Paid</g:link>
 							<g:link type="button" class="btn btn-danger btn-sm"
 								controller="userDate" action="cancelDate"
 								params="${[canceledDateProf1: it.profile1, canceledDateProf2: it.profile2, canceledDateDate: it.dateTime] }">Cancel</g:link></td>
-					</g:if>
+					</g:elseif>
 					<g:else>
 						<td><g:link type="button" class="btn btn-success btn-sm"
 								controller="userDate" action="payDate"
@@ -111,7 +126,7 @@
 								params="${[canceledDateProf1: it.profile1, canceledDateProf2: it.profile2, canceledDateDate: it.dateTime] }">Cancel</g:link></td>
 					</g:else>
 					<td>
-						${it?.profile1 }
+						<g:link controller="profile" action="show" id="${it?.profile1 }">${it?.profile1 }</g:link>
 					</td>
 				</g:else>
 				<g:if test="${it?.profile1Paid && it?.profile2Paid }">
@@ -197,12 +212,12 @@
 			<tr>
 				<g:if test="${it?.profile1?.profileId == activeProfileId }">
 					<td>
-						${it?.profile2 }
+						<g:link controller="profile" action="show" id="${it?.profile2 }">${it?.profile2 }</g:link>
 					</td>
 				</g:if>
 				<g:else>
 					<td>
-						${it?.profile1 }
+						<g:link controller="profile" action="show" id="${it?.profile1}">${it?.profile1 }</g:link>
 					</td>
 				</g:else>
 				<td><g:if test="${it?.custRep != null }">

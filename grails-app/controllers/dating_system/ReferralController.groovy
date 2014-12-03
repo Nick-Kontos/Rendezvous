@@ -4,6 +4,7 @@ package dating_system
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import information.Profile
 
 @Transactional(readOnly = true)
 class ReferralController {
@@ -11,12 +12,38 @@ class ReferralController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Referral.list(params), model:[referralInstanceCount: Referral.count()]
+		Profile currentProfile = Profile.findByProfileId(session.activeProfileId)
+		def c = Referral.createCriteria()
+		def referralList = c.list{
+			eq('profileC', currentProfile)
+		}
+		def c1 = Referral.createCriteria()
+		def myReferredList = c1.list{
+			eq('profileA', currentProfile)
+		}
+        
+        render view: 'index', model:[referralList: referralList, myReferredList: myReferredList]
     }
 	
+	def referForm(){
+		Profile b = Profile.findByProfileId(params.profileId)
+		def c = Profile.createCriteria()
+		def profileList = c.list{
+			ne('mf', b.mf)
+			ne('profileId', session.activeProfileId)
+		}
+		println profileList
+		render view: '/profile/referList', model: [profileList: profileList, profileB: params.profileId]
+	}
+	
+	@Transactional
 	def refer(){
-		
+		Date d = new Date()
+		Referral r = new Referral(profileA: Profile.findByProfileId(session.activeProfileId), profileB: Profile.findByProfileId(params.profileB), 
+			profileC: Profile.findByProfileId(params.profileC), dateTime: d)
+		if(!(r.save(flush:true)) )
+			println r.errors
+		redirect controller: 'Referral', action: 'index'
 	}
 
     def show(Referral referralInstance) {

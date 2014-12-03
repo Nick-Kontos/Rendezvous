@@ -29,6 +29,17 @@ class LikesController {
 		
 		render view:'index', model:[likesInstanceCount: Likes.count(), yLike: youLike, lYou: likesYou, activeProfileId: session.activeProfileId]
     }
+	
+	@Transactional
+	def like(){
+		Date d = new Date()
+		Likes l = new Likes(liker: Profile.findByProfileId(session.activeProfileId), likee: Profile.findByProfileId(params.profileId), dateTime: d)
+		
+		if(!(l.save(flush:true)))
+		println l.errors
+		
+		redirect controller: 'Likes', action: 'index'
+	}
 
     def show(Likes likesInstance) {
         respond likesInstance
