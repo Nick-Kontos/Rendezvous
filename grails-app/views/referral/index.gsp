@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>My Referrals</h1>
-	<table class="table table-hover">
+	<table class="table table-striped">
 			<tr>
 				<th>Profile</th>
 				<th>Suggested By</th>
@@ -29,7 +29,7 @@
 		</g:each>
 	</table>
 	<h1>Profiles Suggested by Date Experts</h1>
-	<table class="table table-hover">
+	<table class="table table-striped">
 			<tr>
 				<th>Profile</th>
 				<th>Suggested By</th>
@@ -50,7 +50,7 @@
 		</g:each>
 	</table>
 	<h1>History of Profiles Referred</h1>
-	<table class="table table-hover">
+	<table class="table table-striped">
 			<tr>
 				<th>Referred</th>
 				<th>Referred To</th>

@@ -75,6 +75,9 @@ class CustomerRepresentativeController {
 		}
 	}
 
+	def makeSuggestion(){
+		
+	}
 	private UserDate retrieveFromParams(){
 		String d=params.date;
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")

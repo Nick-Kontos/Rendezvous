@@ -9,6 +9,7 @@
 					<th>Weight</th>
 					<th>Hair Color</th>
 					<th>Hobbies</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -33,6 +34,11 @@
 							${
 								s.hobbies
 							}
+						</td>
+						<td>
+						<g:link title="Suggest Profile" class="btn btn-primary btn-xs" controller="customerRepresentative" action="makeSuggestion">
+						<i class="fa fa-arrow-circle-right"></i>
+						</g:link>
 						</td>
 					</tr>
 				</g:each>
