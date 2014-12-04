@@ -86,7 +86,7 @@ class ProfileController {
 		println p.errors
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'profile.label', default: 'Profile'), p.id])
+                flash.message = "Profile ${p.profileId} created"
                 redirect action:"edit", model:[profileInstance:p]
             }
             '*' { respond p, [status: CREATED] }

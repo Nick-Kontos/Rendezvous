@@ -17,7 +17,6 @@
 	</g:isEmployee>
 	<g:isManager>
 		<g:render template="/help/managerHelp"></g:render>
-		<g:link controller="employeeManager" class="btn btn-primary">Dashboard</g:link>
 	</g:isManager>
 	<g:isUser>
 
