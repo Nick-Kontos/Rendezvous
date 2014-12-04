@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>Your Suggestions</h1>
-	<table class="table table-hover">
+	<table class="table table-striped">
 		<tr>
 			<th>Profile</th>
 			<th>Age</th>

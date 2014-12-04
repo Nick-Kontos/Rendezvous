@@ -11,7 +11,7 @@
 <body>
 	<h1>My Dates</h1>
 	<h3>Date Requests</h3>
-	<table class="table table-hover">
+	<table class="table table-striped">
 		<tr>
 			<th>Action</th>
 			<th>Profile</th>
@@ -35,7 +35,7 @@
 		</g:each>
 	</table>
 	<h3>Dates Pending Reply</h3>
-	<table class="table table-hover">
+	<table class="table table-striped">
 		<tr>
 			<th>Action</th>
 			<th>Profile</th>
@@ -60,7 +60,7 @@
 		</g:each>
 	</table>
 	<h3>Upcoming Dates</h3>
-	<table class="table table-hover">
+	<table class="table table-striped">
 		<tr>
 			<th>Action</th>
 			<th>Profile</th>
@@ -197,7 +197,7 @@
 		</g:each>
 	</table>
 	<h3>Past Dates</h3>
-	<table class="table table-hover">
+	<table class="table table-striped">
 		<tr>
 			<th>Profile</th>
 			<th>Customer Representative</th>

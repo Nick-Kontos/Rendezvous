@@ -18,6 +18,7 @@ $(function(){
 </head>
 <body>
 	<div class="body">
+	<h1>Make Date Suggestion</h1>
 		<div class="row border-bottom">
 			<div class="col-lg-2">Enter Profile:</div>
 			<div class="col-lg-10">

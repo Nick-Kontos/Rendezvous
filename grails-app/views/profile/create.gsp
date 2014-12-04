@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="layout" content="main">
+<meta name="layout" content="restrict">
 <g:set var="entityName"
 	value="${message(code: 'profile.label', default: 'Profile')}" />
 <title><g:message code="default.create.label"
@@ -9,6 +9,10 @@
 </head>
 <body>
 	<div id="create-profile" class="content scaffold-create" role="main">
+
+		<div>
+			<g:link controller="app">Back</g:link>
+		</div>
 		<h1>
 			<g:message code="default.create.label" args="[entityName]" />
 		</h1>
@@ -41,7 +45,7 @@
 				<g:render template="form" />
 			</fieldset>
 			<fieldset class="buttons">
-				<g:submitButton name="create" class="save"
+				<g:submitButton name="create" class="save btn btn-primary"
 					value="${message(code: 'default.button.create.label', default: 'Create')}" />
 			</fieldset>
 		</g:form>

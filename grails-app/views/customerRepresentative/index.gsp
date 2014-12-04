@@ -14,13 +14,13 @@
 			</h1>
 			<hr>
 			<g:link controller="customerRepresentative" action="recordDate"
-				class="menuTile">Record Date</g:link>
+				class="menuTile"><i class="fa fa-calendar"></i><p>Record Date</p></g:link>
 			<g:link controller="customerRepresentative" action="customerMenu"
-				class="menuTile">Customer Information</g:link>
+				class="menuTile"><i class="fa fa-user"></i><p>Customer Information</p></g:link>
 			<g:link controller="customerRepresentative" action="mailingList"
-				class="menuTile">Mailing List</g:link>
+				class="menuTile"><i class="fa fa-envelope"></i><p>Mailing List</p></g:link>
 			<g:link controller="customerRepresentative" action="viewProfileSuggestions"
-				class="menuTile">View A Profile</g:link>
+				class="menuTile"><i class="fa fa-group"></i><p>View A Profile</p></g:link>
 		</div>
 		<div class="row">
 			<div class="col-lg-12"></div>

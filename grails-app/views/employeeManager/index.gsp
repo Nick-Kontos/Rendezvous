@@ -14,11 +14,11 @@
 			</h1>
 			<hr>
 			<g:link controller="employeeManager" action="salesReport"
-				class="menuTile">sales report</g:link>
+				class="menuTile"><i class="fa fa-dollar"></i><p>Sales Report</p></g:link>
 			<g:link controller="employeeManager" action="allUsers"
-				class="menuTile">all users</g:link>
+				class="menuTile"><i class="fa fa-group"></i><p>All Users</p></g:link>
 			<g:link controller="employeeManager" action="calendarDateStats"
-				class="menuTile">calendar dates</g:link>
+				class="menuTile"><i class="fa fa-calendar"></i><p>Calendar Dates</p></g:link>
 		</div>
 	</div>
 	<div class="row">

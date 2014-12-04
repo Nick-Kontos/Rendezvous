@@ -23,8 +23,8 @@
 			<div class="col-lg-12">
 				<h1>Select A Customer Action</h1>
 				<hr>
-				<g:link controller="user" action="create" class="menuTile">Add User</g:link>
-				<a id="viewUserButton" class="menuTile" href="#">View User</a>
+				<g:link controller="user" action="create" class="menuTile"><i class="fa fa-plus"></i><p>Add User</p></g:link>
+				<a id="viewUserButton" class="menuTile" href="#"><i class="fa fa-user"></i><p>View User</p></a>
 			</div>
 		</div>
 		<g:form name="showForm" controller="user" action="show">
