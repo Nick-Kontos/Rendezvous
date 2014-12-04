@@ -56,7 +56,8 @@ class UserController {
 
     def edit() {
         def userInstance= User.findWhere(ssn:session.user.ssn);
-		render view:'edit',model:[userInstance:userInstance];
+		def accounts=Account.findAllWhere(owner:session.user);
+		render view:'edit',model:[userInstance:userInstance,accounts:accounts];
     }
 
     @Transactional
@@ -91,19 +92,16 @@ class UserController {
     }
 
     @Transactional
-    def delete(User userInstance) {
+    def delete() {
 
-        if (userInstance == null) {
-            notFound()
-            return
-        }
+		def p=Account.findAllWhere(owner:session.user);
 
-        userInstance.delete flush:true
+        p.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
-                redirect action:"index", method:"GET"
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Profile.label', default: 'Profile'), p.id])
+                redirect action:"edit", controller:"user", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
         }
