@@ -13,7 +13,7 @@
 		
 		</g:isManager>
 		<g:isUser>
-		
+			
 		</g:isUser>
 	</body>
 </html>

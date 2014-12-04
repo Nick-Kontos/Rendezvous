@@ -107,8 +107,8 @@ class UserDateController {
 	}
 
 	def payDate(){
-
-		def accountList = Account.findAllByOwner(User.findBySsn(Profile.findByProfileId(session.activeProfileId).owner.ssn))
+		def accountList = []
+		accountList = Account.findAllByOwner(User.findBySsn(Profile.findByProfileId(session.activeProfileId).owner.ssn))
 		render view: 'payDate', model:[accountList: accountList, payedDateProf1: params.payedDateProf1, payedDateProf2: params.payedDateProf2, payedDateDate: params.payedDateDate]
 	}
 	@Transactional
