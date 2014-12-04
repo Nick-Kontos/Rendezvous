@@ -55,6 +55,7 @@ class UserController {
 	}
 
 	def upgradeForm(){
+		def accountList = []
 		accountList = Account.findAllByOwner(User.findBySsn(Profile.findByProfileId(session.activeProfileId).owner.ssn))
 		render view: '/profile/payUpgrade', model: [accountList: accountList]
 	}
@@ -64,8 +65,7 @@ class UserController {
 		User u = session.user
 		u.ppp = params.InputUserType
 		u.save(flush:true)
-		session.user = u
-		redirect controller: 'User', view: 'edit'
+		redirect controller: 'user', action: 'edit'
 	}
 
     def edit() {
@@ -104,6 +104,7 @@ class UserController {
 			'*'{ respond p, [status: OK] }
 		}
 	}
+
     @Transactional
     def delete() {
 		def p=Account.findAllWhere(owner:session.user);

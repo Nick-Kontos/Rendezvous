@@ -9,7 +9,7 @@
 	<g:if test="${!accountList.isEmpty() }">
 		<g:form controller="user" action="upgrade">
 			<div class="form-group">
-				<label for="InputAccountType">Select Account Role</label> <select
+				<label for="InputAccountType">Select account to pay with: </label> <select
 					class="form-select" name="InputAccountType" id="InputAccountType">
 					<g:each in="${accountList }">
 						<option value="${it }">
@@ -19,11 +19,11 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<label for="InputUserType">Select Account Role</label> 
+				<label for="InputUserType">Select user upgrade type</label> 
 				<g:select class="form-select" name="InputUserType" id="InputUserType" from="${['Super-User', 'Good-User', 'User-User'] }"/>
 			</div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-default btn-lg btn-block">Search</button>
+				<button type="submit" class="btn btn-default btn-lg btn-block">Purchase</button>
 			</div>
 		</g:form>
 	</g:if>
