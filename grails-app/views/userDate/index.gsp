@@ -214,83 +214,88 @@
 
 		</tr>
 		<g:each in="${previousDateList }">
-			<tr>
-				<g:if test="${it?.profile1?.profileId == activeProfileId }">
-					<td><g:link controller="profile" action="show"
-							id="${it?.profile2 }">
-							${it?.profile2 }
-						</g:link></td>
-				</g:if>
-				<g:else>
-					<td><g:link controller="profile" action="show"
-							id="${it?.profile1}">
-							${it?.profile1 }
-						</g:link></td>
-				</g:else>
-				<td><g:if test="${it?.custRep != null }">
-						${it?.custRep.firstName + it?.custRep.lastName }
-					</g:if> <g:else>
+			<g:if test="${it.bookingFee!=null}">
+				<tr>
+					<g:if test="${it?.profile1?.profileId == activeProfileId }">
+						<td><g:link controller="profile" action="show"
+								id="${it?.profile2 }">
+								${it?.profile2 }
+							</g:link></td>
+					</g:if>
+					<g:else>
+						<td><g:link controller="profile" action="show"
+								id="${it?.profile1}">
+								${it?.profile1 }
+							</g:link></td>
+					</g:else>
+					<td><g:if test="${it?.custRep != null }">
+							${it?.custRep.firstName + it?.custRep.lastName }
+						</g:if> <g:else>
 						Representative not assigned
 					</g:else></td>
-				<td>
-					${it?.dateTime }
-				</td>
-				<g:if test="${it?.bookingFee == null }">
-					<td>Fee not set</td>
-				</g:if>
-				<g:else>
 					<td>
-						${'$' + it?.bookingFee }
+						${it?.dateTime }
 					</td>
-				</g:else>
-				<td>
-					${it?.comments }
-				</td>
-				<g:if test="${it?.profile1 == activeProfileId }">
-					<g:if test="${it?.user1Rating == null }">
-						<td>Not rated</td>
+					<g:if test="${it?.bookingFee == null }">
+						<td>Fee not set</td>
 					</g:if>
 					<g:else>
 						<td>
-							${it?.user1Rating }
+							${'$' + it?.bookingFee }
 						</td>
 					</g:else>
-					<g:if test="${it?.user2Rating == null }">
-						<td>Not rated</td>
+					<td>
+						${it?.comments }
+					</td>
+					<g:if test="${it?.profile1 == activeProfileId }">
+						<g:if test="${it?.user1Rating == null }">
+							<td>Not rated</td>
+						</g:if>
+						<g:else>
+							<td>
+								${it?.user1Rating }
+							</td>
+						</g:else>
+						<g:if test="${it?.user2Rating == null }">
+							<td>Not rated</td>
+						</g:if>
+						<g:else>
+							<td>
+								${it?.user2Rating }
+							</td>
+						</g:else>
 					</g:if>
 					<g:else>
-						<td>
-							${it?.user2Rating }
-						</td>
+						<g:if test="${it?.user2Rating == null }">
+							<td>Not rated</td>
+						</g:if>
+						<g:else>
+							<td>
+								${it?.user2Rating }
+							</td>
+						</g:else>
+						<g:if test="${it?.user1Rating == null }">
+							<td>Not rated</td>
+						</g:if>
+						<g:else>
+							<td>
+								${it?.user1Rating }
+							</td>
+						</g:else>
 					</g:else>
-				</g:if>
-				<g:else>
-					<g:if test="${it?.user2Rating == null }">
-						<td>Not rated</td>
-					</g:if>
-					<g:else>
-						<td>
-							${it?.user2Rating }
-						</td>
-					</g:else>
-					<g:if test="${it?.user1Rating == null }">
-						<td>Not rated</td>
-					</g:if>
-					<g:else>
-						<td>
-							${it?.user1Rating }
-						</td>
-					</g:else>
-				</g:else>
-				<td><g:if test="${session.activeProfileId.equals(it?.profile1)?it?.user1Rating==null:it?.user2Rating==null}"><g:form controller="userDate" action="rateDate">
-				<g:hiddenField name="profile1" value="${it?.profile1 }"/>
-				<g:hiddenField name="profile2" value="${it?.profile2 }"/>
-				<g:hiddenField name="dateTime" value="${it?.dateTime }"/>
-						<button title="Rate Date" class="btn btn-success btn-xs">
-							<i class="fa fa-star"></i>
-						</button>
-					</g:form></g:if></td>
-			</tr>
+					<td><g:if
+							test="${session.activeProfileId.equals(it?.profile1)?it?.user1Rating==null:it?.user2Rating==null}">
+							<g:form controller="userDate" action="rateDate">
+								<g:hiddenField name="profile1" value="${it?.profile1 }" />
+								<g:hiddenField name="profile2" value="${it?.profile2 }" />
+								<g:hiddenField name="dateTime" value="${it?.dateTime }" />
+								<button title="Rate Date" class="btn btn-success btn-xs">
+									<i class="fa fa-star"></i>
+								</button>
+							</g:form>
+						</g:if></td>
+				</tr>
+			</g:if>
 		</g:each>
 	</table>
 </body>
