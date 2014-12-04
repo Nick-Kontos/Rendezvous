@@ -13,7 +13,18 @@ class SecurityFilters {
 				else if(session.user&&(actionName=='edit'||actionName=='save'||actionName=='update'))return true;
 				else {
 					redirect(controller:'login',action: 'login')
-					return false 
+					return false
+				}
+			}
+		}
+		accountControllerCheck(controller:'account',action:'*'){
+			before={
+				if(session.user&&User.isUser(session.user)){
+					return true;
+				}
+				else{
+					redirect(controller:'login',action: 'login')
+					return false
 				}
 			}
 		}
@@ -47,7 +58,7 @@ class SecurityFilters {
 				}
 			}
 		}
-		managerLoginCheck(controller: 'employeeManager', action: '*') {
+		managerLoginCheck(controller: 'employeeManager|employee', action: '*') {
 			before = {
 				if (!session.user && !actionName.equals('login')&&!Person.isManager(session.user)) {
 					session.invalidate()
