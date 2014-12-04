@@ -1,4 +1,4 @@
-<div class="row border-bottom">
+<div class="row">
 	<h3>Dashboard</h3>
 	<p>The dashboard is your home menu with options to record a date,
 		view customer information, produce a customer mailing list and view a

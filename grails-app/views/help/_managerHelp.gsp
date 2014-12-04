@@ -1,4 +1,4 @@
-<div class="row border-bottom">
+<div class="row">
 	<h3>Dashboard</h3>
 	<p>The dashboard is your home menu with options to view a monthly
 		sales report, all users, a particular user's information and
