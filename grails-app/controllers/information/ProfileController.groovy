@@ -16,6 +16,45 @@ class ProfileController {
     def create() {
         respond new Profile(params)
     }
+	
+	def searchForm(){
+		render view: 'search'
+	}
+	
+	def search(){
+		def c = Profile.createCriteria()
+		def resultList = c.list{
+			if(params.InputId && params.InputId != ''){
+				ilike('profileId', "%" + params.InputId + "%")
+			}
+			if(params.InputMinAge && params.InputMaxAge){
+				int minAge = Integer.parseInt(params.InputMinAge)
+				int maxAge = Integer.parseInt(params.InputMaxAge)
+				between('age', minAge, maxAge)
+			}
+			if(params.InputMinHeight && params.InputMaxHeight){
+				double minHeight = Double.parseDouble(params.InputMinHeight)
+				double maxHeight = Double.parseDouble(params.InputMaxHeight)
+				le('height', maxHeight)
+				ge('height', minHeight)
+			}
+			if(params.InputMinWeight && params.InputMaxWeight){
+				int minWeight = Integer.parseInt(params.InputMinWeight)
+				int maxWeight = Integer.parseInt(params.InputMaxWeight)
+				between('weight', minWeight, maxWeight)
+			}
+			if(params.InputHobby){
+				ilike('hobbies', "%" + params.InputHobby + "%")
+			}
+			if(params.InputGender){
+				eq('mf', params.InputGender)
+			}
+			if(params.InputHair){
+				eq('hairColor', params.InputHair, [ignoreCase: true])
+			}
+		}
+		render view: "searchList", model: [resultList: resultList]
+	}
 
     @Transactional
     def save() {
