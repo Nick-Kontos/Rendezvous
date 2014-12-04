@@ -60,13 +60,52 @@ class UserDateController {
 		date.save(flush:true)
 		redirect controller: 'UserDate', action: 'index'
 	}
-	
+
 	def dateSuggestions(){
-		def suggestions=dateService.getDateSuggestions(session.activeProfileId);		
+		def suggestions=dateService.getDateSuggestions(session.activeProfileId);
 		render view: 'suggestions', model: [suggestions: suggestions]
-		
+
 	}
-	
+
+	def geoDateForm(){
+		render view: 'geoDateForm'
+	}
+
+	@Transactional
+	def geoDate(){
+		def geoList = []
+		if(params.latitude && params.longitude){
+			def latitude = Double.parseDouble(params.latitude)
+			def longitude = Double.parseDouble(params.longitude)
+			def profile = Profile.findByProfileId(session.activeProfileId)
+			profile.latitude = latitude
+			profile.longitude = longitude
+			profile.save(flush:true)
+			def c = Profile.createCriteria()
+			def profileList = c.list{
+				ne('mf', profile.mf)
+				isNotNull('latitude')
+				isNotNull('longitude')
+			}
+			profileList.each{
+				if(haversine(profile.latitude, profile.longitude, it.latitude, it.longitude) <= profile.datinGeoRange){
+					geoList.add(it)
+				}
+			}
+		}
+		render view: 'suggestions', model: [suggestions: geoList]
+	}
+
+	int haversine(double la1, double lo1, double la2, double lo2){
+		int r = 6371; // average radius of the earth in km
+		double dLat = Math.toRadians(la2 - la1);
+		double dLon = Math.toRadians(lo2 - lo1);
+		double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(Math.toRadians(la1)) * Math.cos(Math.toRadians(la2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		double d = r * c * 1.60934;
+		return d;
+	}
+
 	def payDate(){
 
 		def accountList = Account.findAllByOwner(User.findBySsn(Profile.findByProfileId(session.activeProfileId).owner.ssn))
@@ -90,20 +129,20 @@ class UserDateController {
 		date.save(flush: true)
 		redirect controller: 'UserDate', action: 'index'
 	}
-	
+
 	def requestForm(){
 		render view: 'requestDate', model: [profile2: params.profile2]
 	}
-	
+
 	@Transactional
 	def requestDate(){
 		SimpleDateFormat sdf = new SimpleDateFormat('MM-dd-yyyy HH:mm')
 		Date d = sdf.parse(params.date_month + "-" + params.date_day + "-" + params.date_year + " " + params.date.hours + ":" + params.date.minutes)
-		UserDate userDate = new UserDate(profile1: Profile.findByProfileId(session.activeProfileId), profile2: Profile.findByProfileId(params.profile2), 
-			location: params.location, dateTime: d, comments: 'None')
+		UserDate userDate = new UserDate(profile1: Profile.findByProfileId(session.activeProfileId), profile2: Profile.findByProfileId(params.profile2),
+		location: params.location, dateTime: d, comments: 'None')
 		try{
 			userDate.validate();
-			
+
 			userDate.save(flush:true)
 			print userDate.errors
 		}catch(Exception e){

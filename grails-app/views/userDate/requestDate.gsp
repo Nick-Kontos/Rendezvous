@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta name="layout" content="main">
-<title>Date payment</title>
+<title>Date Request</title>
 </head>
 <body>
 	<g:form role="form" controller="userDate" action="requestDate">
