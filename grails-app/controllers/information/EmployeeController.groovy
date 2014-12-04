@@ -3,6 +3,7 @@ package information
 
 
 import static org.springframework.http.HttpStatus.*
+import dating_system.UserDate;
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -91,6 +92,10 @@ class EmployeeController {
 	@Transactional
 	def delete() {
 		Employee employeeInstance=Employee.findWhere(ssn:params.ssn);
+		if(UserDate.findWhere(custRep:employeeInstance)==null){
+			render "Employee assigned to dates cannot delete"
+			return;
+		}
 		def p=Person.findWhere(ssn:employeeInstance.ssn);
 		p.delete(flush:true);
 		employeeInstance.delete flush:true
