@@ -25,6 +25,7 @@
 			<li><g:link controller="employeeManager" action="allUsers">View All Users</g:link></li>
 			<li><g:link controller="employeeManager"
 					action="calendarDateStats">Calendar Stats</g:link></li>
+			<li><g:link controller="employeeManager" action="employeeMenu">Employee Menu</g:link></li>
 		</g:isManager>
 	</ul>
 </div>

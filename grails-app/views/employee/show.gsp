@@ -49,30 +49,6 @@
 					
 				</li>
 				</g:if>
-				<g:if test="${employeeInstance?.city}">
-				<li class="fieldcontain">
-					<span id="city-label" class="property-label"><g:message code="employee.city.label" default="City" /></span>
-					
-						<span class="property-value" aria-labelledby="city-label"><g:fieldValue bean="${employeeInstance}" field="city"/></span>
-					
-				</li>
-				</g:if>
-			
-				
-			
-				
-			
-				<g:if test="${employeeInstance?.hourlyRate}">
-				<li class="fieldcontain">
-					<span id="hourlyRate-label" class="property-label"><g:message code="employee.hourlyRate.label" default="Hourly Rate" /></span>
-					
-						<span class="property-value" aria-labelledby="hourlyRate-label"><g:fieldValue bean="${employeeInstance}" field="hourlyRate"/></span>
-					
-				</li>
-				</g:if>
-			
-				
-			
 				<g:if test="${employeeInstance?.role}">
 				<li class="fieldcontain">
 					<span id="role-label" class="property-label"><g:message code="employee.role.label" default="Role" /></span>
@@ -81,24 +57,24 @@
 					
 				</li>
 				</g:if>
+				<g:if test="${employeeInstance?.hourlyRate}">
+				<li class="fieldcontain">
+					<span id="hourlyRate-label" class="property-label"><g:message code="employee.hourlyRate.label" default="Hourly Rate" /></span>
+					
+						<span class="property-value" aria-labelledby="hourlyRate-label">$<g:fieldValue bean="${employeeInstance}" field="hourlyRate"/></span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${employeeInstance?.startDate}">
 				<li class="fieldcontain">
 					<span id="startDate-label" class="property-label"><g:message code="employee.startDate.label" default="Start Date" /></span>
 					
-						<span class="property-value" aria-labelledby="startDate-label"><g:formatDate date="${employeeInstance?.startDate}" /></span>
+						<span class="property-value" aria-labelledby="startDate-label"><g:formatDate date="${employeeInstance?.startDate}" format="MM/dd/yyyy" /></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${employeeInstance?.state}">
-				<li class="fieldcontain">
-					<span id="state-label" class="property-label"><g:message code="employee.state.label" default="State" /></span>
-					
-						<span class="property-value" aria-labelledby="state-label"><g:fieldValue bean="${employeeInstance}" field="state"/></span>
-					
-				</li>
-				</g:if>
 			
 				<g:if test="${employeeInstance?.street}">
 				<li class="fieldcontain">
@@ -108,7 +84,30 @@
 					
 				</li>
 				</g:if>
-			
+				<g:if test="${employeeInstance?.city}">
+				<li class="fieldcontain">
+					<span id="city-label" class="property-label"><g:message code="employee.city.label" default="City" /></span>
+					
+						<span class="property-value" aria-labelledby="city-label"><g:fieldValue bean="${employeeInstance}" field="city"/></span>
+					
+				</li>
+				</g:if>
+				<g:if test="${employeeInstance?.state}">
+				<li class="fieldcontain">
+					<span id="state-label" class="property-label"><g:message code="employee.state.label" default="State" /></span>
+					
+						<span class="property-value" aria-labelledby="state-label"><g:fieldValue bean="${employeeInstance}" field="state"/></span>
+					
+				</li>
+				</g:if>
+				<g:if test="${employeeInstance?.zipCode}">
+				<li class="fieldcontain">
+					<span id="zipCode-label" class="property-label"><g:message code="employee.zipCode.label" default="Zip Code" /></span>
+					
+						<span class="property-value" aria-labelledby="zipCode-label">${employeeInstance.zipCode }</span>
+					
+				</li>
+				</g:if>
 				<g:if test="${employeeInstance?.telephone}">
 				<li class="fieldcontain">
 					<span id="telephone-label" class="property-label"><g:message code="employee.telephone.label" default="Telephone" /></span>
@@ -118,19 +117,10 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${employeeInstance?.zipCode}">
-				<li class="fieldcontain">
-					<span id="zipCode-label" class="property-label"><g:message code="employee.zipCode.label" default="Zip Code" /></span>
-					
-						<span class="property-value" aria-labelledby="zipCode-label"><g:fieldValue bean="${employeeInstance}" field="zipCode"/></span>
-					
-				</li>
-				</g:if>
-			
 			</ul>
 			<g:form url="[resource:employeeInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="edit btn btn-primary" action="edit" resource="${employeeInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="edit btn btn-primary" action="edit" id="${employeeInstance.ssn }"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>

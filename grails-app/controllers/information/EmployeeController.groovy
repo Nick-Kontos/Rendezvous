@@ -34,28 +34,33 @@ class EmployeeController {
             respond employeeInstance.errors, view:'create'
             return
         }
-
         employeeInstance.save flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'employee.label', default: 'Employee'), employeeInstance.id])
-                redirect employeeInstance
-            }
-            '*' { respond employeeInstance, [status: CREATED] }
-        }
+        redirect controller:'employee',action:'index'
     }
 
-    def edit(Employee employeeInstance) {
-        respond employeeInstance
+    def edit() {
+		Employee employeeInstance=Employee.findWhere(ssn:params.id);
+		if(!employeeInstance)render "Invalid SSN"
+        render view:'edit',model:[employeeInstance:employeeInstance];
     }
 
     @Transactional
-    def update(Employee employeeInstance) {
-        if (employeeInstance == null) {
-            notFound()
-            return
-        }
+    def update() {
+		
+		Employee employeeInstance=Employee.findWhere(ssn:params.ssn);		
+		
+		employeeInstance.email=params.email;
+		employeeInstance.firstName=params.firstName;
+		employeeInstance.lastName=params.lastName;
+		employeeInstance.hourlyRate=Integer.parseInt(params.hourlyRate);
+		String sd=params.startDate;
+		employeeInstance.startDate=params.startDate;
+		employeeInstance.street=params.street;
+		employeeInstance.city=params.city;
+		employeeInstance.state=params.state;
+		employeeInstance.zipCode=Integer.parseInt(params.zipCode);
+		employeeInstance.telephone=params.telephone;
 
         if (employeeInstance.hasErrors()) {
             respond employeeInstance.errors, view:'edit'
@@ -80,16 +85,11 @@ class EmployeeController {
             notFound()
             return
         }
-
+		def p=Person.findWhere(ssn:employeeInstance.ssn);
+		p.delete(flush:true);
         employeeInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Employee.label', default: 'Employee'), employeeInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+		
+        redirect controller:'employeeManager',action:'employeeMenu';
     }
 
     protected void notFound() {
