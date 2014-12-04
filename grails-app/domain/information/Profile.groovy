@@ -15,11 +15,13 @@ class Profile {
 	String hairColor
 	Date creationDate
 	Date lastModDate
-	String location
+	BigDecimal latitude
+	BigDecimal longitude
 	int age
 	static belongsTo = [owner:User]
 	static constraints = {
-		location nullable:true
+		latitude nullable:true
+		longitude nullable:true
 	}
 	static mapping={
 		table 'Profile'

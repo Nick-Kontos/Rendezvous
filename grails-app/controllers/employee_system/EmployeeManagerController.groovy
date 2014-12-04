@@ -153,4 +153,7 @@ class EmployeeManagerController {
 		}
 		render template:'calendarStats',model:[dateSelected:dateSelected,userDates:userDates,totalRevenue:totalRevenue];
 	}
+	def employeeMenu(){
+		render view:'employeeMenu'
+	}
 }

@@ -14,11 +14,25 @@
 			</h1>
 			<hr>
 			<g:link controller="employeeManager" action="salesReport"
-				class="menuTile"><i class="fa fa-dollar"></i><p>Sales Report</p></g:link>
+				class="menuTile">
+				<i class="fa fa-dollar"></i>
+				<p>Sales Report</p>
+			</g:link>
 			<g:link controller="employeeManager" action="allUsers"
-				class="menuTile"><i class="fa fa-group"></i><p>All Users</p></g:link>
+				class="menuTile">
+				<i class="fa fa-group"></i>
+				<p>All Users</p>
+			</g:link>
 			<g:link controller="employeeManager" action="calendarDateStats"
-				class="menuTile"><i class="fa fa-calendar"></i><p>Calendar Dates</p></g:link>
+				class="menuTile">
+				<i class="fa fa-calendar"></i>
+				<p>Calendar Dates</p>
+			</g:link>
+			<g:link controller="employeeManager" action="employeeMenu"
+				class="menuTile">
+				<i class="fa fa-user"></i>
+				<p>Employee Menu</p>
+			</g:link>
 		</div>
 	</div>
 	<div class="row">
