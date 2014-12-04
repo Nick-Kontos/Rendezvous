@@ -156,8 +156,7 @@
 
 					</fieldset>
 					<fieldset class="buttons">
-						<g:actionSubmit controller="UserConrtoller" class="save"
-							action="update"
+						<g:actionSubmit class="save btn btn-primary" action="update"
 							value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					</fieldset>
 				</g:form>
@@ -171,8 +170,8 @@
 						<th>Card #</th>
 						<th>Action</th>
 					</tr>
-						<g:each in="${accounts }" var="a">
-					<tr>
+					<g:each in="${accounts }" var="a">
+						<tr>
 							<td>
 								${a.acctNum}
 							</td>
@@ -184,10 +183,12 @@
 									<g:hiddenField name="acctNum" value="${a.acctNum }" />
 									<g:hiddenField name="cardNumber" value="${a.cardNumber }" />
 									<g:hiddenField name="ssn" value="${a.owner.ssn }" />
-									<button type="submit">Delete</button>
+									<g:actionSubmit class="delete btn btn-danger" action="delete"
+										value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+										onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 								</g:form>
-					</tr>
-						</g:each>
+						</tr>
+					</g:each>
 				</table>
 			</div>
 
@@ -223,8 +224,7 @@
 
 					</fieldset>
 					<fieldset class="buttons">
-						<g:actionSubmit controller="account" class="save"
-							action="save"
+						<g:actionSubmit class="save btn btn-primary" action="save"
 							value="Create" />
 					</fieldset>
 				</g:form>
