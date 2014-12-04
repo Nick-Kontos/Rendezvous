@@ -20,7 +20,7 @@
 			<g:link controller="customerRepresentative" action="mailingList"
 				class="menuTile"><i class="fa fa-envelope"></i><p>Mailing List</p></g:link>
 			<g:link controller="customerRepresentative" action="viewProfileSuggestions"
-				class="menuTile"><i class="fa fa-group"></i><p>View A Profile</p></g:link>
+				class="menuTile"><i class="fa fa-group"></i><p>View Profile Suggestions</p></g:link>
 		</div>
 		<div class="row">
 			<div class="col-lg-12"></div>

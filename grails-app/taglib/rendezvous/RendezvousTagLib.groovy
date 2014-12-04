@@ -25,6 +25,10 @@ class RendezvousTagLib {
 		if(session.user)
 			out<<body();
 	}
+	def notLoggedIn={attrs,body->
+		if(!session.user)
+			out<<body();
+	}
 	def profileSelector={attrs,body->
 		if(Person.isUser(session.user))
 		{
