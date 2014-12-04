@@ -13,7 +13,7 @@
 <body>
 	<h1>Help Page</h1>
 	<g:isEmployee>
-
+		<g:render template="/help/custRepHelp"></g:render>
 	</g:isEmployee>
 	<g:isManager>
 		<g:render template="/help/managerHelp"></g:render>
