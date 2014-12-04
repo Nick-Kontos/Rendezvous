@@ -1,7 +1,7 @@
 package information
 
 class Person {
-	String ssn;
+	String ssn
 	String password
 	String firstName
 	String lastName

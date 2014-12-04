@@ -85,6 +85,7 @@ class ProfileController {
 
 		p.save flush:true
 		println p.errors
+
 		request.withFormat {
 			form multipartForm {
 				flash.message = message(code: 'default.created.message', args: [
@@ -96,6 +97,7 @@ class ProfileController {
 			'*' { respond p, [status: CREATED] }
 		}
 	}
+
 
 	def edit() {
 		def profileInstance= Profile.findWhere(profileId:session.activeProfileId);
