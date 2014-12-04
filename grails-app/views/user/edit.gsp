@@ -231,8 +231,9 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-6 col-lg-offset-3">
-				<g:link type="button" class="btn btn-success btn-sm" controller="user" action="upgradeForm">UPGRADE NOW</g:link>
+			<div class="col-lg-6 col-lg-offset-3" style="text-allign: center">
+				Current account level: ${userInstance?.ppp }
+				<g:link type="button" class="btn btn-success btn-lg btn-block" id="upgradeButton" controller="user" action="upgradeForm">UPGRADE NOW</g:link>
 			</div>
 		</div>
 	</div>
