@@ -282,14 +282,14 @@
 						</td>
 					</g:else>
 				</g:else>
-				<td><g:form controller="userDate" action="rateDate">
+				<td><g:if test="${session.activeProfileId.equals(it?.profile1)?it?.user1Rating==null:it?.user2Rating==null}"><g:form controller="userDate" action="rateDate">
 				<g:hiddenField name="profile1" value="${it?.profile1 }"/>
 				<g:hiddenField name="profile2" value="${it?.profile2 }"/>
 				<g:hiddenField name="dateTime" value="${it?.dateTime }"/>
 						<button title="Rate Date" class="btn btn-success btn-xs">
 							<i class="fa fa-star"></i>
 						</button>
-					</g:form></td>
+					</g:form></g:if></td>
 			</tr>
 		</g:each>
 	</table>

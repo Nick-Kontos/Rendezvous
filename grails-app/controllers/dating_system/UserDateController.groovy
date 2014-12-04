@@ -175,7 +175,10 @@ class UserDateController {
 
 		request.withFormat {
 			form multipartForm {
-				flash.message = message(code: 'default.created.message', args: [message(code: 'userDate.label', default: 'UserDate'), userDateInstance.id])
+				flash.message = message(code: 'default.created.message', args: [
+					message(code: 'userDate.label', default: 'UserDate'),
+					userDateInstance.id
+				])
 				redirect userDateInstance
 			}
 			'*' { respond userDateInstance, [status: CREATED] }
@@ -202,7 +205,10 @@ class UserDateController {
 
 		request.withFormat {
 			form multipartForm {
-				flash.message = message(code: 'default.updated.message', args: [message(code: 'UserDate.label', default: 'UserDate'), userDateInstance.id])
+				flash.message = message(code: 'default.updated.message', args: [
+					message(code: 'UserDate.label', default: 'UserDate'),
+					userDateInstance.id
+				])
 				redirect userDateInstance
 			}
 			'*'{ respond userDateInstance, [status: OK] }
@@ -221,7 +227,10 @@ class UserDateController {
 
 		request.withFormat {
 			form multipartForm {
-				flash.message = message(code: 'default.deleted.message', args: [message(code: 'UserDate.label', default: 'UserDate'), userDateInstance.id])
+				flash.message = message(code: 'default.deleted.message', args: [
+					message(code: 'UserDate.label', default: 'UserDate'),
+					userDateInstance.id
+				])
 				redirect action:"index", method:"GET"
 			}
 			'*'{ render status: NO_CONTENT }
@@ -231,7 +240,10 @@ class UserDateController {
 	protected void notFound() {
 		request.withFormat {
 			form multipartForm {
-				flash.message = message(code: 'default.not.found.message', args: [message(code: 'userDate.label', default: 'UserDate'), params.id])
+				flash.message = message(code: 'default.not.found.message', args: [
+					message(code: 'userDate.label', default: 'UserDate'),
+					params.id
+				])
 				redirect action: "index", method: "GET"
 			}
 			'*'{ render status: NOT_FOUND }
@@ -245,8 +257,35 @@ class UserDateController {
 	def getLocationSuggestions(){
 
 	}
-	
+
 	def rateDate(){
-		
+		Profile p1=Profile.findWhere(profileId:params.profile1);
+		Profile p2=Profile.findWhere(profileId:params.profile2);
+		String d=params.dateTime;
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date=sdf.parse(d);
+		UserDate uDate=UserDate.findWhere(profile1:p1,profile2:p2,dateTime:date);
+		render view:"rateDate",model:[date:uDate];
+	}
+	@Transactional
+	def updateRating(){
+		Profile p1=Profile.findWhere(profileId:params.profile1);
+		Profile p2=Profile.findWhere(profileId:params.profile2);
+		String d=params.dateTime;
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date=sdf.parse(d);
+		UserDate uDate=UserDate.findWhere(profile1:p1,profile2:p2,dateTime:date);
+		if(uDate.comments)
+			uDate.comments+=' | '+params.comments.trim();
+		else
+			uDate.comments=params.comments.trim();
+		if(session.activeProfileId==params.profile1){
+			uDate.user2Rating=Integer.parseInt(params.rating);
+		}
+		else{
+			uDate.user1Rating=Integer.parseInt(params.rating);
+		}
+		uDate.save(flush:true);
+		redirect action:'index';
 	}
 }
