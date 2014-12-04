@@ -229,7 +229,11 @@
 					</fieldset>
 				</g:form>
 			</div>
-
+		</div>
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3">
+				<g:link type="button" class="btn btn-success btn-sm" controller="user" action="upgradeForm">UPGRADE NOW</g:link>
+			</div>
 		</div>
 	</div>
 </body>
