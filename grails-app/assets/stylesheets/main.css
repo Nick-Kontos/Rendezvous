@@ -95,6 +95,10 @@ ul{
 label{
 	width: 150px;
 }
+.property-label{
+	display: inline-block;
+	width: 150px;
+}
 a{
 	color: #a00;
 }

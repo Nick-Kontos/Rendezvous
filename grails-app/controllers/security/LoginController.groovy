@@ -26,7 +26,9 @@ class LoginController {
 			}
 		}
 		else{
+			if(params.ssn!=null)
 			redirect action:'login',params: [requestUri: params.requestUri,error:true]
+			else redirect action:'login',params: [requestUri: params.requestUri]
 		}
 	}
 	def login(){
