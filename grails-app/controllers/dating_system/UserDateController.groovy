@@ -245,4 +245,8 @@ class UserDateController {
 	def getLocationSuggestions(){
 
 	}
+	
+	def rateDate(){
+		
+	}
 }

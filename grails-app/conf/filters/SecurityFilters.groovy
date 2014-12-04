@@ -10,7 +10,7 @@ class SecurityFilters {
 			before={
 				if(!session.user&&(actionName=='create'||actionName=='save'))return true
 				else if(User.isEmployee(session.user)||User.isManager(session.user))return true;
-				else if(session.user&&(actionName=='edit'||actionName=='save'||actionName=='update'))return true;
+				else if(session.user&&(actionName=='edit'||actionName=='save'||actionName=='update'||actionName=='updgradeForm')||actionName=='upgrade')return true;
 				else {
 					redirect(controller:'login',action: 'login')
 					return false

@@ -25,9 +25,10 @@
 					<g:link type="button" class="btn btn-danger btn-sm"
 						controller="userDate" action="cancelDate"
 						params="${[canceledDateProf1: it?.profile1, canceledDateProf2: it?.profile2, canceledDateDate: it?.dateTime] }">Decline</g:link></td>
-				<td>
-					<g:link controller="profile" action="show" id="${it.profile1 }">${it?.profile1 }</g:link>
-				</td>
+				<td><g:link controller="profile" action="show"
+						id="${it.profile1 }">
+						${it?.profile1 }
+					</g:link></td>
 				<td>
 					${it?.dateTime }
 				</td>
@@ -47,9 +48,10 @@
 				<td><g:link type="button" class="btn btn-danger btn-sm"
 						controller="userDate" action="cancelDate"
 						params="${[canceledDateProf1: it?.profile1, canceledDateProf2: it?.profile2, canceledDateDate: it?.dateTime] }">Cancel</g:link></td>
-				<td>
-					<g:link controller="profile" action="show" id="${it?.profile2 }">${it?.profile2 }</g:link>
-				</td>
+				<td><g:link controller="profile" action="show"
+						id="${it?.profile2 }">
+						${it?.profile2 }
+					</g:link></td>
 				<td>
 					${it?.dateTime }
 				</td>
@@ -97,12 +99,13 @@
 								controller="userDate" action="cancelDate"
 								params="${[canceledDateProf1: it.profile1, canceledDateProf2: it.profile2, canceledDateDate: it.dateTime] }">Cancel</g:link></td>
 					</g:else>
-					<td>
-						<g:link controller="profile" action="show" id="${it?.profile2 }">${it?.profile2 }</g:link>
-					</td>
+					<td><g:link controller="profile" action="show"
+							id="${it?.profile2 }">
+							${it?.profile2 }
+						</g:link></td>
 				</g:if>
 				<g:else>
-				<g:if test="${it?.custRep == null }">
+					<g:if test="${it?.custRep == null }">
 						<td><g:link type="button" class="btn btn-success btn-sm"
 								disabled="disabled" controller="userDate" action="payDate">Rep not assigned</g:link>
 							<g:link type="button" class="btn btn-danger btn-sm"
@@ -110,7 +113,7 @@
 								params="${[canceledDateProf1: it.profile1, canceledDateProf2: it.profile2, canceledDateDate: it.dateTime] }">Cancel</g:link></td>
 					</g:if>
 					<g:elseif test="${!(it?.accepted) || it?.profile2Paid}">
-					
+
 						<td><g:link type="button" class="btn btn-success btn-sm"
 								disabled="disabled" controller="userDate" action="payDate">Paid</g:link>
 							<g:link type="button" class="btn btn-danger btn-sm"
@@ -125,9 +128,10 @@
 								controller="userDate" action="cancelDate"
 								params="${[canceledDateProf1: it.profile1, canceledDateProf2: it.profile2, canceledDateDate: it.dateTime] }">Cancel</g:link></td>
 					</g:else>
-					<td>
-						<g:link controller="profile" action="show" id="${it?.profile1 }">${it?.profile1 }</g:link>
-					</td>
+					<td><g:link controller="profile" action="show"
+							id="${it?.profile1 }">
+							${it?.profile1 }
+						</g:link></td>
 				</g:else>
 				<g:if test="${it?.profile1Paid && it?.profile2Paid }">
 					<td>
@@ -206,19 +210,22 @@
 			<th>Comments</th>
 			<th>Your rating</th>
 			<th>Date's rating</th>
+			<th>Action</th>
 
 		</tr>
 		<g:each in="${previousDateList }">
 			<tr>
 				<g:if test="${it?.profile1?.profileId == activeProfileId }">
-					<td>
-						<g:link controller="profile" action="show" id="${it?.profile2 }">${it?.profile2 }</g:link>
-					</td>
+					<td><g:link controller="profile" action="show"
+							id="${it?.profile2 }">
+							${it?.profile2 }
+						</g:link></td>
 				</g:if>
 				<g:else>
-					<td>
-						<g:link controller="profile" action="show" id="${it?.profile1}">${it?.profile1 }</g:link>
-					</td>
+					<td><g:link controller="profile" action="show"
+							id="${it?.profile1}">
+							${it?.profile1 }
+						</g:link></td>
 				</g:else>
 				<td><g:if test="${it?.custRep != null }">
 						${it?.custRep.firstName + it?.custRep.lastName }
@@ -275,6 +282,14 @@
 						</td>
 					</g:else>
 				</g:else>
+				<td><g:form controller="userDate" action="rateDate">
+				<g:hiddenField name="profile1" value="${it?.profile1 }"/>
+				<g:hiddenField name="profile2" value="${it?.profile2 }"/>
+				<g:hiddenField name="dateTime" value="${it?.dateTime }"/>
+						<button title="Rate Date" class="btn btn-success btn-xs">
+							<i class="fa fa-star"></i>
+						</button>
+					</g:form></td>
 			</tr>
 		</g:each>
 	</table>
