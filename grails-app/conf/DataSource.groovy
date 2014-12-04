@@ -22,7 +22,7 @@ environments {
 			port=3306;
 			driverClassName = "com.mysql.jdbc.Driver"
 			username = "root"
-			password = "password"
+			password = ""
 			dialect = 'org.hibernate.dialect.MySQL5InnoDBDialect'
 		}
 	}
