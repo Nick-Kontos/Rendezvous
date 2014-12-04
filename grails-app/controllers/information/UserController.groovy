@@ -104,40 +104,10 @@ class UserController {
 			'*'{ respond p, [status: OK] }
 		}
 	}
-
-<<<<<<< HEAD
-	@Transactional
-	def delete(User userInstance) {
-=======
     @Transactional
     def delete() {
->>>>>>> branch 'master' of https://github.com/Nick-Kontos/Rendezvous.git
-
-<<<<<<< HEAD
-		if (userInstance == null) {
-			notFound()
-			return
-		}
-=======
 		def p=Account.findAllWhere(owner:session.user);
->>>>>>> branch 'master' of https://github.com/Nick-Kontos/Rendezvous.git
-
-<<<<<<< HEAD
-		userInstance.delete flush:true
-=======
         p.delete flush:true
->>>>>>> branch 'master' of https://github.com/Nick-Kontos/Rendezvous.git
-
-<<<<<<< HEAD
-		request.withFormat {
-			form multipartForm {
-				flash.message = message(code: 'default.deleted.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
-				redirect action:"index", method:"GET"
-			}
-			'*'{ render status: NO_CONTENT }
-		}
-	}
-=======
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Profile.label', default: 'Profile'), p.id])
@@ -146,7 +116,6 @@ class UserController {
             '*'{ render status: NO_CONTENT }
         }
     }
->>>>>>> branch 'master' of https://github.com/Nick-Kontos/Rendezvous.git
 
 	protected void notFound() {
 		request.withFormat {
