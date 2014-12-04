@@ -11,6 +11,7 @@
 			<li><g:link controller="userDate">Dates</g:link></li>
 			<li><g:link controller="likes">Likes</g:link></li>
 			<li><g:link controller="userDate" action="dateSuggestions">Suggestions</g:link></li>
+			<li><g:link controller="userDate" action="geoDateForm">Geo Date</g:link></li>
 		</g:isUser>
 		<g:isEmployee>
 			<li><g:link controller="customerRepresentative">Dashboard</g:link></li>
